@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FLIP Budgeting Game</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="background">
+    <img src="ellipse10.png" class="bg-img" />
+    <img src="ellipse7.png" class="bg-img" />
+    <img src="ellipse10.png" class="bg-img" />
+    <img src="ellipse5.png" class="bg-img" />
+    <img src="ellipse8.png" class="bg-img" />
+    <img src="ellipse6.png" class="bg-img" />
+    <img src="ellipse6.png" class="bg-img" />
+    <img src="ellipse9.png" class="bg-img" />
+    <img src="ellipse5.png" class="bg-img" />
+    <img src="ellipse8.png" class="bg-img" />
+</div>
+<!--
+<div class="border-top" aria-hidden="true"></div>
+<div class="border-bottom" aria-hidden="true"></div>-->
+
+<img src="Bear.png" alt="Descriptive alt text for the PNG figure" class="background-figure" />
+<main aria-live="polite">
+    <section id="home" role="main">
+        <button id="btn-tips" type="button" aria-label="Go to Tips section">TIPS</button>
+        <button id="btn-budget" type="button" aria-label="Go to Budget Tracking section">BUDGET</button>
+        <button id="btn-rules" type="button" aria-label="Go to Rules section">RULES</button>
+    </section>
+
+    <section id="tips-page" role="main" aria-hidden="true">
+        <div id="tips-list" role="list" aria-label="Tips list"></div>
+        <footer id="tips-footer">
+            <button id="btn-back-from-tips" type="button" aria-label="Back to home">Back</button>
+        </footer>
+    </section>
+
+    <!-- Budget --> 
+    <section id="budget-page" role="main" aria-hidden="true" class="budget-container">
+        <h2 id="budget-heading">Choose Your Budget</h2>
+        <div id="budget-selection" class="budget-selection">
+            <button class="budget-type-btn" id="family-budget-btn">Family Budget</button>
+            <button class="budget-type-btn" id="parent-budget-btn">Parents Budget</button>
+            <button class="budget-type-btn" id="child-budget-btn">Child Budget</button>
+        </div>
+    
+    <section id="family-budget-page" class="budget-inner-page" aria-hidden="true" style="display: none;">
+        <div class="header">
+        <h1>Family budget</h1>
+        </div>
+        <div class="container">
+          <div class="section orange">
+          <h2>INCOME</h2>
+          <p>(Salary & Child benefit)</p>
+        </div>
+        <div class="section green">
+          <div class="circle">
+            <h3 style="text-align:center;">Money for everyday use</h3>
+          </div>
+          <h4>Needs</h4>
+          <ul>
+            <li>Housing</li>
+            <li>Utilities</li>
+            <li>Transportation</li>
+            <li>Communication</li>
+          </ul>
+        </div>
+        <div class="section pink">
+          <h3>Savings</h3>
+          <ul>
+            <li>Emergency funds</li>
+            <li>Savings account</li>
+          </ul>
+          <h3>Wants</h3>
+          <ul>
+            <li>Memberships</li>
+            <li>Subscriptions</li>
+            <li>Travelling</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer">
+        <p>Money left over: 400 €</p>
+      </div>
+      <button class="back-btn" id="btn-back-from-family-budget" type="button">Back</button>
+    </section>
+
+<section id="child-budget-page" class="budget-inner-page"  aria-hidden="true" style="display: none;"> 
+        <div class="cbp-budget-display">
+         <h1>Your budget: <span id="cbp-budgetAmount">20</span> EUR</h1>
+        </div>
+    <p class="cbp-instruction">Note how much pocket money you have left - and mark the color of the option you have chosen</p>
+<table class="cbp-budget-table">
+    <thead>
+        <tr>
+            <th>Round</th>
+            <th>Current</th>
+            <th>Additional</th>
+            <th>Color</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td>1</td>
+                <td><input type="number" class="cbp-current-input" value="0"></td>
+                <td><input type="number" class="cbp-additional-input" value="0"></td>
+                <td>
+                    <div class="cbp-color-selector">
+                        <div class="cbp-color-circle cbp-violet" data-color="violet"></div>
+                        <div class="cbp-color-circle cbp-blue" data-color="blue"></div>
+                        <div class="cbp-color-circle cbp-yellow" data-color="yellow"></div>
+                    </div>
+                </td>
+        </tr>
+            <tr>
+      <td>2</td>
+                <td><input type="number" class="cbp-current-input" value="0"></td>
+                <td><input type="number" class="cbp-additional-input" value="0"></td>
+                <td>
+                    <div class="cbp-color-selector">
+                        <div class="cbp-color-circle cbp-violet" data-color="violet"></div>
+                        <div class="cbp-color-circle cbp-blue" data-color="blue"></div>
+                        <div class="cbp-color-circle cbp-yellow" data-color="yellow"></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+      <td>3</td>
+                <td><input type="number" class="cbp-current-input" value="0"></td>
+                <td><input type="number" class="cbp-additional-input" value="0"></td>
+                <td>
+                    <div class="cbp-color-selector">
+                        <div class="cbp-color-circle cbp-violet" data-color="violet"></div>
+                        <div class="cbp-color-circle cbp-blue" data-color="blue"></div>
+                        <div class="cbp-color-circle cbp-yellow" data-color="yellow"></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+      <td>4</td>
+               <td><input type="number" class="cbp-current-input" value="0"></td>
+                <td><input type="number" class="cbp-additional-input" value="0"></td>
+                <td>
+                    <div class="cbp-color-selector">
+                        <div class="cbp-color-circle cbp-violet" data-color="violet"></div>
+                        <div class="cbp-color-circle cbp-blue" data-color="blue"></div>
+                        <div class="cbp-color-circle cbp-yellow" data-color="yellow"></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+      <td>5</td>
+                <td><input type="number" class="cbp-current-input" value="0"></td>
+                <td><input type="number" class="cbp-additional-input" value="0"></td>
+                <td>
+                    <div class="cbp-color-selector">
+                        <div class="cbp-color-circle cbp-violet" data-color="violet"></div>
+                        <div class="cbp-color-circle cbp-blue" data-color="blue"></div>
+                        <div class="cbp-color-circle cbp-yellow" data-color="yellow"></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+      <td>6</td>
+                <td><input type="number" class="cbp-current-input" value="0"></td>
+                <td><input type="number" class="cbp-additional-input" value="0"></td>
+                <td>
+                    <div class="cbp-color-selector">
+                        <div class="cbp-color-circle cbp-violet" data-color="violet"></div>
+                        <div class="cbp-color-circle cbp-blue" data-color="blue"></div>
+                        <div class="cbp-color-circle cbp-yellow" data-color="yellow"></div>
+                    </div>
+                </td>
+            </tr>
+    </tbody>
+</table>
+
+<div class="cbp-summary">
+    <h3>Sum</h3>
+    <div class="cbp-summary-row">
+        <span>Violet selected:</span>
+        <span id="cbp-violetCount">0</span>
+    </div>
+    <div class="cbp-summary-row">
+        <span>Blue selected:</span>
+        <span id="cbp-blueCount">0</span>
+    </div>
+    <div class="cbp-summary-row">
+        <span>Yellow selected:</span>
+        <span id="cbp-yellowCount">0</span>
+    </div>
+    <div class="cbp-summary-row cbp-total">
+        <span>Amount remaining:</span>
+        <span id="cbp-remainingAmount">20</span>
+    </div>
+</div>
+<button class="back-btn" id="btn-back-from-child-budget" type="button">Back</button>
+</section>
+
+<section id="parent-budget-page" class="budget-inner-page" aria-hidden="true" style="display: none;">
+
+        <div class="pbp-budget-display">
+         <h1>Your budget: <span id="pbp-budgetAmount">400</span> EUR</h1>
+        </div>
+    <p class="pbp-instruction">Note how much pocket money you have left - and mark the color of the option you have chosen</p>
+<table class="pbp-budget-table">
+    <thead>
+        <tr>
+            <th>Round</th>
+            <th>Current</th>
+            <th>Additional</th>
+            <th>Color</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td>1</td>
+                <td><input type="number" class="pbp-current-input" value="0"></td>
+                <td><input type="number" class="pbp-additional-input" value="0"></td>
+                <td>
+                    <div class="pbp-color-selector">
+                        <div class="pbp-color-circle pbp-violet" data-color="violet"></div>
+                        <div class="pbp-color-circle pbp-blue" data-color="blue"></div>
+                        <div class="pbp-color-circle pbp-yellow" data-color="yellow"></div>
+                    </div>
+                </td>
+        </tr>
+            <tr>
+      <td>2</td>
+                <td><input type="number" class="pbp-current-input" value="0"></td>
+                <td><input type="number" class="pbp-additional-input" value="0"></td>
+                <td>
+                    <div class="pbp-color-selector">
+                        <div class="pbp-color-circle pbp-violet" data-color="violet"></div>
+                        <div class="pbp-color-circle pbp-blue" data-color="blue"></div>
+                        <div class="pbp-color-circle pbp-yellow" data-color="yellow"></div>
+                    </div>
+                </td>
+            <tr>
+      <td>3</td>
+              <td><input type="number" class="pbp-current-input" value="0"></td>
+                <td><input type="number" class="pbp-additional-input" value="0"></td>
+                <td>
+                    <div class="pbp-color-selector">
+                        <div class="pbp-color-circle pbp-violet" data-color="violet"></div>
+                        <div class="pbp-color-circle pbp-blue" data-color="blue"></div>
+                        <div class="pbp-color-circle pbp-yellow" data-color="yellow"></div>
+                    </div>
+                </td>
+            <tr>
+      <td>4</td>
+               <td><input type="number" class="pbp-current-input" value="0"></td>
+                <td><input type="number" class="pbp-additional-input" value="0"></td>
+                <td>
+                    <div class="pbp-color-selector">
+                        <div class="pbp-color-circle pbp-violet" data-color="violet"></div>
+                        <div class="pbp-color-circle pbp-blue" data-color="blue"></div>
+                        <div class="pbp-color-circle pbp-yellow" data-color="yellow"></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+      <td>5</td>
+                <td><input type="number" class="pbp-current-input" value="0"></td>
+                <td><input type="number" class="pbp-additional-input" value="0"></td>
+                <td>
+                    <div class="pbp-color-selector">
+                        <div class="pbp-color-circle pbp-violet" data-color="violet"></div>
+                        <div class="pbp-color-circle pbp-blue" data-color="blue"></div>
+                        <div class="pbp-color-circle pbp-yellow" data-color="yellow"></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+      <td>6</td>
+                <td><input type="number" class="pbp-current-input" value="0"></td>
+                <td><input type="number" class="pbp-additional-input" value="0"></td>
+                <td>
+                    <div class="pbp-color-selector">
+                        <div class="pbp-color-circle pbp-violet" data-color="violet"></div>
+                        <div class="pbp-color-circle pbp-blue" data-color="blue"></div>
+                        <div class="pbp-color-circle pbp-yellow" data-color="yellow"></div>
+                    </div>
+                </td>
+            </tr>
+    </tbody>
+</table>
+
+<div class="pbp-summary">
+    <h3>Sum</h3>
+    <div class="pbp-summary-row">
+        <span>Violet selected:</span>
+        <span id="pbp-violetCount">0</span>
+    </div>
+    <div class="pbp-summary-row">
+        <span>Blue selected:</span>
+        <span id="pbp-blueCount">0</span>
+    </div>
+    <div class="pbp-summary-row">
+        <span>Yellow selected:</span>
+        <span id="pbp-yellowCount">0</span>
+    </div>
+    <div class="pbp-summary-row cbp-total">
+        <span>Amount remaining:</span>
+        <span id="pbp-remainingAmount">20</span>
+    </div>
+</div>
+    <button class="back-btn" id="btn-back-from-parent-budget" type="button">Back</button>
+
+    </section>
+        <button class="back-btn" id="btn-back-from-budget" type="button" aria-label="Back to home">Back</button>
+    </section>
+
+    <!-- Rules section -->
+    <section id="rules-page" role="main" aria-hidden="true">
+        <h2>Game Rules</h2>
+        <div id="rules-content">
+            <ol>
+                <li><strong>Start:</strong>
+                    <ul>
+                        <li>Kids receive €20, adults €400</li>
+                        <li>Kids choose colors and get 6 matching situation cards</li>
+                        <li>Place figures on the starting field of their color</li>
+                    </ul>
+                </li>
+                <li><strong>Game flow (clockwise):</strong>
+                    <ul>
+                        <li>Draw a card, read it aloud, make a decision</li>
+                        <li>Move your figure, pay the amount</li>
+                        <li>Knowledge fields: answer a question,  earn €1 for correct answers</li>
+                        <li>Track your budget and colors on your sheet</li>
+                    </ul>
+                </li>
+                <li><strong>End of game:</strong>
+                    <ul>
+                        <li>Once each child has played 6 cards</li>
+                        <li>Final reflection: "What could I have done differently?"</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+        <footer id="rules-footer">
+            <button class="back-btn" id="btn-back-from-rules" type="button" aria-label="Back to home">Back</button>
+        </footer>
+    </section>
+</main>
+
+<div id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc" tabindex="-1">
+    <div class="modal-content">
+        <button class="modal-close" aria-label="Close info dialog" id="modal-close-btn">&times;</button>
+        <h2 class="modal-title" id="modal-title">Modal Title</h2>
+        <div id="modal-desc" class="modal-text">Modal text goes here</div>
+    </div>
+</div>
+
+<script src="appscript.js" defer></script>
+</body>
+</html>
