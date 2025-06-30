@@ -4,7 +4,7 @@
   --card-bg: rgba(255 255 255 / 0.05);
   --primary-color: #0032F01A; 
   --accent-color: #7828D21A; 
-  --tip-button-color: #00b4f0;
+  --tip-button-color: rgb(0, 180, 240);
   --tip-button-hover-border: #02abe4; 
   --text-color: #ffffff;
   --text-muted: #aaa;
@@ -36,7 +36,6 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  overflow: hidden;
 }
 
 body {
@@ -154,7 +153,7 @@ button.back-btn:focus-visible {
 }
 
 #tips-page {
-   display: none;
+  display: none;
   flex-direction: column;
   min-height: 100vh;
   padding-top: 48px;  
@@ -164,7 +163,6 @@ button.back-btn:focus-visible {
 
 #tips-list {
   flex: 1 1 auto;
-  overflow-y: auto;
   padding: var(--spacing);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -183,6 +181,11 @@ button.back-btn:focus-visible {
   transition: border 0.3s ease;
   user-select: none;
   border-radius: 12px;
+  cursor: pointer; 
+  transition: all 0.2s ease;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
 }
 .tip-btn:hover,
 .tip-btn:focus-visible {
@@ -212,6 +215,13 @@ button.back-btn:focus-visible {
   border: 2px solid var(--tip-button-hover-border);
   background-color: var(--tip-button-color);
   color: var(--text-color);
+}
+
+@media (max-width: 600px) {
+  .tip-btn {
+    padding: 12px 16px;
+    font-size: 0.95rem;
+  }
 }
 
 #budget-page {
@@ -318,11 +328,11 @@ button.back-btn:focus-visible {
 }
 
 .budget-type-btn {
-  padding: 16px 10px; 
+  padding: 20px 40px; 
   min-width: 0; 
   width: 100%; 
   font-family: 'Inter', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   font-weight: 600;
   text-align: center;
   white-space: nowrap; 
@@ -332,7 +342,7 @@ button.back-btn:focus-visible {
   color: white;
   border: 2px solid #00b4f0; 
   border-radius: var(--border-radius); 
- cursor: pointer;   
+  cursor: pointer;   
 }
 .budget-type-btn:hover {
   background-color: #00b4f0cc; 
@@ -362,19 +372,33 @@ button.back-btn:focus-visible {
   box-sizing: border-box; 
 }
 #rules-content {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 10px;
-  padding: 20px;
-  max-width: 800px;
+  background: rgba(0, 180, 240, 0.9);
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 1000px;
   width: 100%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px; 
+  font-size: 1.2rem;
+  line-height: 1.6;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px; 
   color: #000000;
   text-align: left;
 }
-#rules-content ol {
-  padding-left: 20px; 
+
+#rules-content p {
+  margin-bottom: 12px; 
 }
+
+#rules-content ol, 
+#rules-content ul {
+   padding-left: 24px;
+  margin-bottom: 16px;
+}
+
+#rules-content li {
+  margin-bottom: 6px; /* ✅ nedidelis tarpas tarp sąrašo eilučių */
+}
+
 #rules-footer {
   width: 100%;
   display: flex;

@@ -34,7 +34,6 @@ const btnStartGame = document.getElementById('btn-start-game');
 
 
 
-
   // Data for tips
   const tipsData = [
     { title: "Budget", text: "A budget is a plan for managing income and expenses over a specific period. It helps individuals track spending and save money by setting limits on various expense categories" },
@@ -53,7 +52,6 @@ const btnStartGame = document.getElementById('btn-start-game');
     { title: "Money Habit", text: "A money habit is something you do with money regularly, like always saving a part of what you get. Good money habits help you grow up to be smart with money" },
   ];
 
-  // Show a specific section and hide others
   function showSection(sectionToShow) {
     [home, tipsPage, budgetPage, rulesPage].forEach(section => {
       if (section === sectionToShow) {
@@ -70,7 +68,6 @@ const btnStartGame = document.getElementById('btn-start-game');
     closeModal();
   }
 
-  // Populate tips buttons dynamically
   function populateTips() {
     tipsList.innerHTML = '';
     tipsData.forEach(tip => {
@@ -87,7 +84,6 @@ const btnStartGame = document.getElementById('btn-start-game');
     });
   }
 
-  // Open modal with title and text
   function openModal(title, text) {
     modalTitle.textContent = title;
     modalDesc.textContent = text;
@@ -97,7 +93,7 @@ const btnStartGame = document.getElementById('btn-start-game');
     document.body.style.overflow = 'hidden';
   }
 
-  // Close modal and restore focus appropriately
+
   function closeModal() {
     modal.classList.remove('active');
     modal.setAttribute('aria-hidden', 'true');
@@ -109,8 +105,6 @@ const btnStartGame = document.getElementById('btn-start-game');
       btnTips.focus();
     }
   }
-
-  // Event listeners
 
   btnTips.addEventListener('click', () => {
     populateTips();
@@ -173,10 +167,10 @@ const btnStartGame = document.getElementById('btn-start-game');
     }
   });
 
-  // Randomly position background images in a grid with slight random offset
+  // Randomly position background images 
   (() => {
     const imgs = document.querySelectorAll('.bg-img');
-    const gridSize = Math.ceil(Math.sqrt(imgs.length)); // cells per row/column
+    const gridSize = Math.ceil(Math.sqrt(imgs.length)); 
     const usedPositions = new Set();
 
     imgs.forEach(() => {
@@ -204,8 +198,7 @@ const btnStartGame = document.getElementById('btn-start-game');
     });
   })();
 
-  // Initial setup
-  //showSection(home);
+
 
   //child
   document.addEventListener('DOMContentLoaded', function () {
@@ -270,7 +263,6 @@ const btnStartGame = document.getElementById('btn-start-game');
         updateColorCounts();
     });
 
-    // Rodyti CHILD biudžeto puslapį
 childBudgetBtn.addEventListener('click', () => {
   budgetSelection.style.display = 'none';      
   childBudgetPage.style.display  = 'block';    
@@ -343,7 +335,6 @@ childBudgetBtn.addEventListener('click', () => {
         updateColorCounts();
     });
 
-    // Rodyti CHILD biudžeto puslapį
 parentBudgetBtn.addEventListener('click', () => {
   budgetSelection.style.display = 'none';      
   parentBudgetPage.style.display  = 'block';    
@@ -381,22 +372,21 @@ function toggleGeneralBackButton(show) {
   btn.style.visibility = show ? 'visible' : 'hidden';
 }
 
-//per visa ekrana
 function requestFullscreen() {
-  const element = document.documentElement; // visa svetainė
+  const element = document.documentElement; 
   if (element.requestFullscreen) {
     element.requestFullscreen();
-  } else if (element.webkitRequestFullscreen) { // Safari
+  } else if (element.webkitRequestFullscreen) { 
     element.webkitRequestFullscreen();
-  } else if (element.msRequestFullscreen) { // IE11
+  } else if (element.msRequestFullscreen) { 
     element.msRequestFullscreen();
   }
 }
 
 btnStartGame.addEventListener('click', () => {
   requestFullscreen();
-  introScreen.style.display = 'none';    // paslėpti intro
-  showSection(home);                     // rodyti tikrą pradžią
+  introScreen.style.display = 'none';    
+  showSection(home);                     
 });
 
 })();
