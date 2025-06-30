@@ -84,7 +84,7 @@ body {
   right: 60%;
   top: 50%;
   transform: translate(-50%, -50%), scale(0.8);
-  width: 500px;
+  width: 650px;
   height: auto;
   pointer-events: none;
   z-index: 3; 
