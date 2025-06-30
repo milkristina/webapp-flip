@@ -328,11 +328,11 @@ button.back-btn:focus-visible {
 }
 
 .budget-type-btn {
-  padding: 20px 40px; 
+  padding: 40px 40px; 
   min-width: 0; 
-  width: 100%; 
+  width: 50%; 
   font-family: 'Inter', sans-serif;
-  font-size: 1.4rem;
+  font-size: 2.4rem;
   font-weight: 600;
   text-align: center;
   white-space: nowrap; 
@@ -367,9 +367,9 @@ button.back-btn:focus-visible {
 
 #budget-selection {
   display: flex;
-  flex-direction: column; 
-  align-items: center;   
-  gap: 20px;              
+  flex-direction: column; /* 👈 Stulpeliu */
+  align-items: center;    /* Centruoja horizontaliai */
+  gap: 20px;              /* Tarpai tarp mygtukų */
   padding: 40px 0;
 }
 
