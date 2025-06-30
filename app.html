@@ -20,19 +20,23 @@
     <img src="ellipse5.png" class="bg-img" />
     <img src="ellipse8.png" class="bg-img" />
 </div>
-<!--
-<div class="border-top" aria-hidden="true"></div>
-<div class="border-bottom" aria-hidden="true"></div>-->
 
 <img src="Bear.png" alt="Descriptive alt text for the PNG figure" class="background-figure" />
 <main aria-live="polite">
-    <section id="home" role="main">
+<section id="intro-screen" class="intro-screen" role="main">
+  <div class="intro-content">
+    <h1>Welcome to the FLIP Budgeting Game</h1>
+    <button id="btn-start-game" class="start-btn">Start Game</button>
+  </div>
+</section>
+    
+    <section id="home" role="main" style="display: none;">
         <button id="btn-tips" type="button" aria-label="Go to Tips section">TIPS</button>
         <button id="btn-budget" type="button" aria-label="Go to Budget Tracking section">BUDGET</button>
         <button id="btn-rules" type="button" aria-label="Go to Rules section">RULES</button>
     </section>
 
-    <section id="tips-page" role="main" aria-hidden="true">
+    <section id="tips-page" role="main" style="display: none;" aria-hidden="true">
         <div id="tips-list" role="list" aria-label="Tips list"></div>
         <footer id="tips-footer">
             <button id="btn-back-from-tips" type="button" aria-label="Back to home">Back</button>
@@ -40,7 +44,7 @@
     </section>
 
     <!-- Budget --> 
-    <section id="budget-page" role="main" aria-hidden="true" class="budget-container">
+    <section id="budget-page" role="main" style="display: none;" aria-hidden="true" class="budget-container">
         <h2 id="budget-heading">Choose Your Budget</h2>
         <div id="budget-selection" class="budget-selection">
             <button class="budget-type-btn" id="family-budget-btn">Family Budget</button>
@@ -330,7 +334,7 @@
     </section>
 
     <!-- Rules section -->
-    <section id="rules-page" role="main" aria-hidden="true">
+    <section id="rules-page" role="main" style="display: none;" aria-hidden="true">
         <h2 id="rules-heading">Game Rules</h2>
         <div id="rules-content">
             <ol>

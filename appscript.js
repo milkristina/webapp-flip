@@ -28,6 +28,9 @@ const btnBackFromFamilyBudget = document.getElementById('btn-back-from-family-bu
 const btnBackFromChildBudget = document.getElementById('btn-back-from-child-budget');
 const btnBackFromParentBudget = document.getElementById('btn-back-from-parent-budget');
 const budgetHeading = document.getElementById('budget-heading');
+//start game
+const introScreen = document.getElementById('intro-screen');
+const btnStartGame = document.getElementById('btn-start-game');
 
 
 
@@ -202,7 +205,7 @@ const budgetHeading = document.getElementById('budget-heading');
   })();
 
   // Initial setup
-  showSection(home);
+  //showSection(home);
 
   //child
   document.addEventListener('DOMContentLoaded', function () {
@@ -378,6 +381,22 @@ function toggleGeneralBackButton(show) {
   btn.style.visibility = show ? 'visible' : 'hidden';
 }
 
+//per visa ekrana
+function requestFullscreen() {
+  const element = document.documentElement; // visa svetainė
+  if (element.requestFullscreen) {
+    element.requestFullscreen();
+  } else if (element.webkitRequestFullscreen) { // Safari
+    element.webkitRequestFullscreen();
+  } else if (element.msRequestFullscreen) { // IE11
+    element.msRequestFullscreen();
+  }
+}
 
+btnStartGame.addEventListener('click', () => {
+  requestFullscreen();
+  introScreen.style.display = 'none';    // paslėpti intro
+  showSection(home);                     // rodyti tikrą pradžią
+});
 
 })();

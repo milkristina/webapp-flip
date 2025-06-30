@@ -568,6 +568,7 @@ button.back-btn:focus-visible {
   }
 
   .family-budget-diagram {
+  display: flex;
   position: relative;
   width: 100%;
   max-width: 1000px;
@@ -576,6 +577,7 @@ button.back-btn:focus-visible {
 }
 
 .budget-circle {
+  display: flex;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -593,6 +595,7 @@ button.back-btn:focus-visible {
 }
 
 .arrow {
+  display: flex;
   width: 0;
   height: 0;
   position: absolute;
@@ -626,6 +629,7 @@ button.back-btn:focus-visible {
 }
 
 .cost-box {
+  display: flex;
   position: absolute;
   background: white;
   padding: 20px;
@@ -671,4 +675,41 @@ button.back-btn:focus-visible {
   max-width: 8000px;
   min-height: 500px;
 }
-    
+
+.intro-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(8px); /* blur foną */
+  background: rgba(0, 0, 0, 0.5); /* tamsesnis overlay */
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.intro-content h1 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.start-btn {
+  background-color: #00b4f0;
+  color: white;
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.start-btn:hover {
+  background-color: #009dd0;
+}
