@@ -269,8 +269,8 @@ const budgetHeading = document.getElementById('budget-heading');
 
     // Rodyti CHILD biudžeto puslapį
 childBudgetBtn.addEventListener('click', () => {
-  budgetSelection.style.display = 'none';      // paslėpti pasirinkimų tinklelį
-  childBudgetPage.style.display  = 'block';    // parodyti patį skyrių
+  budgetSelection.style.display = 'none';      
+  childBudgetPage.style.display  = 'block';    
   childBudgetPage.setAttribute('aria-hidden', 'false');
   toggleGeneralBackButton(false);
   budgetHeading.style.display = 'none';
@@ -342,8 +342,8 @@ childBudgetBtn.addEventListener('click', () => {
 
     // Rodyti CHILD biudžeto puslapį
 parentBudgetBtn.addEventListener('click', () => {
-  budgetSelection.style.display = 'none';      // paslėpti pasirinkimų tinklelį
-  parentBudgetPage.style.display  = 'block';    // parodyti patį skyrių
+  budgetSelection.style.display = 'none';      
+  parentBudgetPage.style.display  = 'block';    
   parentBudgetPage.setAttribute('aria-hidden', 'false');
   toggleGeneralBackButton(false);
   budgetHeading.style.display = 'none';

@@ -50,39 +50,53 @@
     
     <section id="family-budget-page" class="budget-inner-page" aria-hidden="true" style="display: none;">
         <div class="header">
-        <h1>Family budget</h1>
+        <h1 id="family-heading">Family budget</h1>
+        <p class="income-label">Income (salary and child benefit)</p>
         </div>
-        <div class="container">
-          <div class="section orange">
-          <h2>INCOME</h2>
-          <p>(Salary & Child benefit)</p>
-        </div>
-        <div class="section green">
-          <div class="circle">
-            <h3 style="text-align:center;">Money for everyday use</h3>
-          </div>
-          <h4>Needs</h4>
-          <ul>
-            <li>Housing</li>
-            <li>Utilities</li>
-            <li>Transportation</li>
-            <li>Communication</li>
-          </ul>
-        </div>
-        <div class="section pink">
-          <h3>Savings</h3>
-          <ul>
-            <li>Emergency funds</li>
-            <li>Savings account</li>
-          </ul>
-          <h3>Wants</h3>
-          <ul>
-            <li>Memberships</li>
-            <li>Subscriptions</li>
-            <li>Travelling</li>
-          </ul>
-        </div>
-      </div>
+    <div class="family-budget-box">
+    <div class="family-budget-diagram">
+    <div class="budget-circle">
+    </div>
+
+       <!-- Fixed Costs – dešinė -->
+    <div class="cost-box fixed">
+      <div class="arrow arrow-left orange"></div>
+      <h3>Fixed Costs</h3>
+      <ul>
+        <li>Housing (rent incl. operating costs)</li>
+        <li>Food, hygiene & medication</li>
+        <li>Mobility (car, bus pass, train journeys)</li>
+        <li>Communication (mobile phone, internet)</li>
+        <li>Streaming services (Spotify, Netflix)</li>
+      </ul>
+    </div>
+
+    <!-- Savings – kairė viršus -->
+    <div class="cost-box savings">
+      <div class="arrow arrow-down green"></div>
+      <h3>Savings</h3>
+      <ul>
+        <li>Savings</li>
+        <li>Nest egg</li>
+      </ul>
+    </div>
+
+    <!-- Variable Costs – kairė apačia -->
+    <div class="cost-box variable">
+      <div class="arrow arrow-up pink"></div>
+      <h3>Variable Costs</h3>
+      <ul>
+        <li>Holidays</li>
+        <li>Shopping</li>
+        <li>Eating out/going out</li>
+        <li>Entertainment</li>
+        <li>Excursions</li>
+        <li>Pocket money</li>
+      </ul>
+    </div>
+  </div>
+  </div>
+  </div>
       <div class="footer">
         <p>Money left over: 400 €</p>
       </div>
@@ -206,7 +220,7 @@
         <div class="pbp-budget-display">
          <h1>Your budget: <span id="pbp-budgetAmount">400</span> EUR</h1>
         </div>
-    <p class="pbp-instruction">Note how much pocket money you have left - and mark the color of the option you have chosen</p>
+    <p class="pbp-instruction">Note how much money you have left - and mark the color of the option you have chosen</p>
 <table class="pbp-budget-table">
     <thead>
         <tr>
@@ -317,7 +331,7 @@
 
     <!-- Rules section -->
     <section id="rules-page" role="main" aria-hidden="true">
-        <h2>Game Rules</h2>
+        <h2 id="rules-heading">Game Rules</h2>
         <div id="rules-content">
             <ol>
                 <li><strong>Start:</strong>

@@ -8,7 +8,7 @@
   --tip-button-hover-border: #02abe4; 
   --text-color: #ffffff;
   --text-muted: #aaa;
-  --modal-bg: rgba(255, 255, 255, 0.85);
+  --modal-bg: rgba(0, 0, 0, 0.85);
   --modal-text-bg: #00b4f0cc;
   --modal-text-color: #ffffff;
   --border-radius: 12px;
@@ -91,25 +91,6 @@ body {
   z-index: 3; 
 }
 
-/*.border-top,
-.border-bottom {
-  position: fixed;
-  left: 0;
-  width: 100%;
-  height: 52px;
-  background: #00b4f0;
-  z-index: 2;
-}
-
-.border-top {
-  top: 0;
-}
-
-.border-bottom {
-  bottom: 0;
-} */
-
-
 #home,
 #tips-page,
 #budget-page,
@@ -162,6 +143,7 @@ button.back-btn:focus-visible {
   box-shadow: 0 10px 25px rgba(120 40 210 / 0.5);
   border: 2px solid transparent;
   border-radius: 12px;
+  cursor: pointer;
 }
 
 #home button:hover,
@@ -175,8 +157,8 @@ button.back-btn:focus-visible {
    display: none;
   flex-direction: column;
   min-height: 100vh;
-  padding-top: 48px;   /* viršuje tarpui nuo border */
-  padding-bottom: 48px; /* apačioje tarpui nuo border */
+  padding-top: 48px;  
+  padding-bottom: 48px; 
   box-sizing: border-box;
 }
 
@@ -262,7 +244,6 @@ button.back-btn:focus-visible {
 }
 
 
-
 #modal {
   position: fixed;
   top: 0;
@@ -327,7 +308,6 @@ button.back-btn:focus-visible {
   font-size: 1.6rem;
 }
 
-/* Budget puslapio nauji stiliai */
 .budget-selection {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -338,31 +318,27 @@ button.back-btn:focus-visible {
 }
 
 .budget-type-btn {
-  padding: 16px 10px; /* Mygtuko vidinė erdvė */
-  min-width: 0; /* Svarbu grid kontekste */
-  width: 100%; /* Mygtuko plotis */
-  /* Teksto stilius */
+  padding: 16px 10px; 
+  min-width: 0; 
+  width: 100%; 
   font-family: 'Inter', sans-serif;
   font-size: 1.1rem;
   font-weight: 600;
   text-align: center;
-  white-space: nowrap; /* Neleidžiama teksto laužymui */
+  white-space: nowrap; 
   overflow: hidden;
-  text-overflow: ellipsis; /* ... jei tekstas per ilgas */
-  /* Dizainas */
-  background-color:  #00b4f0cc;
-; /* Tvirtas mėlynas fonas */
-  color: white; /* Teksto spalva */
-  border: 2px solid #0056b3; /* Tamsesnė mėlyna riba */
-  border-radius: var(--border-radius); /* Apvalūs kampai */
-  cursor: pointer; /* Rodyklė keičiasi, kai pelės žymeklis yra ant mygtuko */
-  transition: all 0.3s ease; /* Sklandus perėjimas */
+  text-overflow: ellipsis; 
+  background-color:  #00b4f0;
+  color: white;
+  border: 2px solid #00b4f0; 
+  border-radius: var(--border-radius); 
+ cursor: pointer;   
 }
 .budget-type-btn:hover {
-  background-color: #0056b3; /* Tamsesnė mėlyna spalva, kai pelės žymeklis ant mygtuko */
-  border-color: #004494; /* Tamsesnė riba, kai pelės žymeklis ant mygtuko */
+  background-color: #00b4f0cc; 
+  border-color: #00b4f0 
 }
-/* Responsive pakeitimai */
+
 @media (max-width: 768px) {
   .budget-selection {
     flex-direction: column;
@@ -376,17 +352,14 @@ button.back-btn:focus-visible {
 }
 
 
-
-
-
 #rules-page {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  padding: 20px; /* Pridėkite šiek tiek vietos aplink */
-  box-sizing: border-box; /* Įtraukite padding į bendrą plotį/aukštį */
+  padding: 20px; 
+  box-sizing: border-box; 
 }
 #rules-content {
   background: rgba(255, 255, 255, 0.9);
@@ -395,65 +368,34 @@ button.back-btn:focus-visible {
   max-width: 800px;
   width: 100%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px; /* Pridėkite vietos tarp turinio ir mygtuko */
+  margin-bottom: 20px; 
   color: #000000;
+  text-align: left;
 }
 #rules-content ol {
-  padding-left: 20px; /* Pridėkite vietos kairėje */
+  padding-left: 20px; 
 }
 #rules-footer {
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 10px 0; /* Pridėkite šiek tiek vietos aplink mygtuką */
+  padding: 10px 0; 
 }
 
 .back-btn {
-  padding: 10px 20px; /* Pridėkite šiek tiek vietos aplink mygtuką */
-  margin: 0 10px; /* Pridėkite šiek tiek vietos aplink mygtuką */
-  border-radius: 5px; /* Apvalūs kampai */
-  background-color: #007BFF; /* Mygtuko spalva */
-  color: white; /* Teksto spalva */
-  border: none; /* Nėra rėmelio */
-  cursor: pointer; /* Rodyklė keičiasi, kai pelės žymeklis yra ant mygtuko */
-  transition: background-color 0.3s; /* Sklandus spalvos perėjimas */
+  padding: 10px 20px;
+  margin: 0 10px; 
+  border-radius: 5px; 
+  background-color: #007BFF; 
+  color: white; 
+  border: none; 
+  cursor: pointer; 
+  transition: background-color 0.3s; 
 }
 .back-btn:hover {
-  background-color: #0056b3; /* Tamsesnė spalva, kai pelės žymeklis ant mygtuko */
+  background-color: #0056b3; 
 }
 
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.section {
-  border: 2px dashed #ccc;
-  border-radius: 12px;
-  background-color: white;
-  padding: 20px;
-  width: 250px;
-}
-
-.circle {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: conic-gradient(
-    #f9a825 0% 50%,
-    #66bb6a 50% 75%,
-    #ec407a 75% 100%
-  );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 20px;
-  text-align: center;
-  color: #333;
-  font-weight: bold;
-}
 
 .footer {
   margin-top: 30px;
@@ -616,4 +558,117 @@ button.back-btn:focus-visible {
         outline: #3498db auto 1px;
     }
 
+    #budget-heading,
+    #rules-heading,
+    #family-heading {
+  font-size: 2.5rem;    
+  color: white;         
+  font-weight: 700;     
+  margin-bottom: 20px;  
+  }
+
+  .family-budget-diagram {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 40px auto;
+  height: 500px;
+}
+
+.budget-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 250px;
+  height: 250px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: conic-gradient(
+    orange 0deg 180deg,
+    pink 180deg 270deg,
+    green 270deg 360deg
+  );
+  z-index: 1;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.arrow {
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.arrow-left {
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 20px solid orange;
+  top: 50%;
+  left: -20px;
+  transform: translateY(-50%);
+}
+
+.arrow-up {
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid pink;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.arrow-down {
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 20px solid green;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.cost-box {
+  position: absolute;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 220px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  color: #333;
+  text-align: left;
+  font-size: 0.95rem;
+  z-index: 2;
+}
+
+.cost-box.fixed {
+  top: 50%;
+  left: 250px;
+  transform: translateY(-50%);
+}
+
+.cost-box.savings {
+  top: 12px;
+  right: 60px;
+}
+
+.cost-box.variable {
+  top: 360px;
+  right: 80px;
+}
+
+
+.income-label {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #ddd;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.family-budget-box {
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px 40px;
+  border-radius: 24px;
+  max-width: 8000px;
+  min-height: 500px;
+}
     
