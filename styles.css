@@ -365,6 +365,13 @@ button.back-btn:focus-visible {
   }
 }
 
+#budget-selection {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;   
+  gap: 20px;              
+  padding: 40px 0;
+}
 
 #rules-page {
   display: flex;
