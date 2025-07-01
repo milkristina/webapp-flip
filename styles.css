@@ -724,18 +724,17 @@ container {
 }
 
 .available-money {
-    position: absolute;
-    bottom: -2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #06b6d4;
-    color: white;
-    padding: 0.75rem 1.5rem;
-    border-radius: 16px;
-    font-weight: bold;
-    font-size: 1.125rem;
-    opacity: 0;
-    animation: moneyFadeIn 0.8s ease-out 1.2s forwards;
+  position: relative;
+  margin-top: 2rem;
+  background: #06b6d4;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 16px;
+  font-weight: bold;
+  font-size: 1.125rem;
+  text-align: center;
+  opacity: 0;
+  animation: moneyFadeIn 0.8s ease-out 1.2s forwards
 }
 
 .info-panels {
