@@ -32,8 +32,9 @@
     
     <section id="home" role="main" style="display: none;">
         <button id="btn-tips" type="button" aria-label="Go to Tips section">TIPS</button>
-        <button id="btn-budget" type="button" aria-label="Go to Budget Tracking section">BUDGET</button>
         <button id="btn-rules" type="button" aria-label="Go to Rules section">RULES</button>
+        <button id="btn-budget" type="button" aria-label="Go to Budget Tracking section">BUDGET</button>
+        
     </section>
 
     <section id="tips-page" role="main" style="display: none;" aria-hidden="true">
@@ -43,12 +44,43 @@
         </footer>
     </section>
 
+ <section id="rules-page" role="main" style="display: none;" aria-hidden="true">
+        <h2 id="rules-heading">Game Rules</h2>
+        <div id="rules-content">
+            <ol>
+                <li><strong>Start:</strong>
+                    <ul>
+                        <li>Kids receive €20, adults €400</li>
+                        <li>Kids choose colors and get 6 matching situation cards</li>
+                        <li>Place figures on the starting field of their color</li>
+                    </ul>
+                </li>
+                <li><strong>Game flow (clockwise):</strong>
+                    <ul>
+                        <li>Draw a card, read it aloud, make a decision</li>
+                        <li>Move your figure, pay the amount</li>
+                        <li>Knowledge fields: answer a question,  earn €1 for correct answers</li>
+                        <li>Track your budget and colors on your sheet</li>
+                    </ul>
+                </li>
+                <li><strong>End of game:</strong>
+                    <ul>
+                        <li>Once each child has played 6 cards</li>
+                        <li>Final reflection: "What could I have done differently?"</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+        <footer id="rules-footer">
+            <button class="back-btn" id="btn-back-from-rules" type="button" aria-label="Back to home">Back</button>
+        </footer>
+    </section>
     <!-- Budget --> 
     <section id="budget-page" role="main" style="display: none;" aria-hidden="true" class="budget-container">
         <h2 id="budget-heading">Choose Your Budget</h2>
         <div id="budget-selection" class="budget-selection">
             <button class="budget-type-btn" id="family-budget-btn">Family Budget</button>
-            <button class="budget-type-btn" id="parent-budget-btn">Parents Budget</button>
+            <button class="budget-type-btn" id="parent-budget-btn">Adult Budget</button>
             <button class="budget-type-btn" id="child-budget-btn">Child Budget</button>
         </div>
     
@@ -303,38 +335,11 @@
         <button class="back-btn" id="btn-back-from-budget" type="button" aria-label="Back to home">Back</button>
     </section>
 
-    <!-- Rules section -->
-    <section id="rules-page" role="main" style="display: none;" aria-hidden="true">
-        <h2 id="rules-heading">Game Rules</h2>
-        <div id="rules-content">
-            <ol>
-                <li><strong>Start:</strong>
-                    <ul>
-                        <li>Kids receive €20, adults €400</li>
-                        <li>Kids choose colors and get 6 matching situation cards</li>
-                        <li>Place figures on the starting field of their color</li>
-                    </ul>
-                </li>
-                <li><strong>Game flow (clockwise):</strong>
-                    <ul>
-                        <li>Draw a card, read it aloud, make a decision</li>
-                        <li>Move your figure, pay the amount</li>
-                        <li>Knowledge fields: answer a question,  earn €1 for correct answers</li>
-                        <li>Track your budget and colors on your sheet</li>
-                    </ul>
-                </li>
-                <li><strong>End of game:</strong>
-                    <ul>
-                        <li>Once each child has played 6 cards</li>
-                        <li>Final reflection: "What could I have done differently?"</li>
-                    </ul>
-                </li>
-            </ol>
-        </div>
-        <footer id="rules-footer">
-            <button class="back-btn" id="btn-back-from-rules" type="button" aria-label="Back to home">Back</button>
-        </footer>
-    </section>
+<div id="adult-budget-selection" class="centered-budget-selection" style="display:none;">
+    <button class="budget-type-btn" id="one-adult-btn">One adult</button>
+    <button class="budget-type-btn" id="two-adults-btn">Two adults</button>
+    <button class="back-btn" id="btn-back-from-adult-budget-selection" type="button">Back</button>
+</div>
 </main>
 
 <div id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc" tabindex="-1">
@@ -344,6 +349,8 @@
         <div id="modal-desc" class="modal-text">Modal text goes here</div>
     </div>
 </div>
+
+
 
 <script src="appscript.js" defer></script>
 </body>

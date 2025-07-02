@@ -31,6 +31,10 @@ const budgetHeading = document.getElementById('budget-heading');
 //start game
 const introScreen = document.getElementById('intro-screen');
 const btnStartGame = document.getElementById('btn-start-game');
+// --- NEW ---
+let parentInitialBudget = 400;   // keičiasi tarp 400 ir 200
+// --- /NEW ---
+
 
 
 
@@ -297,7 +301,7 @@ childBudgetBtn.addEventListener('click', () => {
                 additionalTotal += additional;
             });
 
-            const remaining = 400 - totalSpent + additionalTotal;
+            const remaining = parentInitialBudget - totalSpent + additionalTotal;
             budgetElement.textContent = remaining.toFixed(2);
             remainingAmountElement.textContent = remaining.toFixed(2);
             spentTotalElement.textContent = totalSpent.toFixed(2);
@@ -336,9 +340,8 @@ childBudgetBtn.addEventListener('click', () => {
     });
 
 parentBudgetBtn.addEventListener('click', () => {
-  budgetSelection.style.display = 'none';      
-  parentBudgetPage.style.display  = 'block';    
-  parentBudgetPage.setAttribute('aria-hidden', 'false');
+  budgetSelection.style.display = 'none';
+  document.getElementById('adult-budget-selection').style.display = 'flex';
   toggleGeneralBackButton(false);
   budgetHeading.style.display = 'none';
 });
@@ -388,6 +391,57 @@ btnStartGame.addEventListener('click', () => {
   introScreen.style.display = 'none';    
   showSection(home);                     
 });
+
+
+// --- NEW ---
+// pagalbinė: nuvalo lentelę ir spalvas
+function resetParentBudget() {
+  document.querySelectorAll('.pbp-current-input, .pbp-additional-input')
+    .forEach(inp => inp.value = 0);
+
+  // nuimame pažymėtas spalvas
+  document.querySelectorAll('.pbp-color-circle.selected')
+    .forEach(c => c.classList.remove('selected'));
+
+  // atnaujiname biudžeto skaičiavimus
+  document.dispatchEvent(new Event('input')); // suveiks updateTotals
+}
+
+// vienas suaugęs – 400 €
+document.getElementById('one-adult-btn').addEventListener('click', () => {
+  parentInitialBudget = 400;
+  resetParentBudget();
+  openParentBudgetPage();
+});
+
+// du suaugę – 200 €
+document.getElementById('two-adults-btn').addEventListener('click', () => {
+  parentInitialBudget = 200;
+  resetParentBudget();
+  openParentBudgetPage();
+});
+
+// grįžimas atgal į pagrindinį pasirinkimą
+document.getElementById('btn-back-from-adult-budget-selection').addEventListener('click', () => {
+  document.getElementById('adult-budget-selection').style.display = 'none';
+  budgetSelection.style.display = 'flex';
+  toggleGeneralBackButton(true);
+  budgetHeading.style.display = 'block';
+});
+
+// atidaro tą patį puslapį, bet jau su nustatytu parentInitialBudget
+function openParentBudgetPage() {
+  document.getElementById('adult-budget-selection').style.display = 'none';
+  parentBudgetPage.style.display = 'block';
+  parentBudgetPage.setAttribute('aria-hidden', 'false');
+  // Perrašome pradinį skaičių antraštėje
+  document.getElementById('pbp-budgetAmount').textContent = parentInitialBudget.toFixed(2);
+  document.getElementById('pbp-remainingAmount').textContent = parentInitialBudget.toFixed(2);
+  // paleidžiam skaičiavimą, kad atsinaujintų lentelė bei sumos
+  document.querySelectorAll('.pbp-current-input')[0].dispatchEvent(new Event('input'));
+}
+// --- /NEW ---
+
 
 //family
 
@@ -551,6 +605,11 @@ document.addEventListener('DOMContentLoaded', () => {
     createBudgetCircle();
     createInfoPanels();
 });
+
+//lentelės su tipais
+
+
+
 
 
 })();
