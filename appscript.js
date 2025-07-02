@@ -40,20 +40,24 @@ let parentInitialBudget = 400;   // keičiasi tarp 400 ir 200
 
   // Data for tips
   const tipsData = [
-    { title: "Budget", text: "A budget is a plan for managing income and expenses over a specific period. It helps individuals track spending and save money by setting limits on various expense categories" },
-    { title: "Money", text: "Money is what we use to buy things we need or want. You can earn money by doing jobs or chores" },
-    { title: "Saving", text: "Saving means putting some money aside and not spending it right away. It helps you buy something bigger later or be ready for surprises." },
-    { title: "Piggy Bank", text: "A piggy bank is a small container to keep your saved money safe at home. It's a fun way to start learning how to save" },
-    { title: "Allowance", text: "An allowance is money your parents give you regularly, often for helping with chores. You can choose to spend or save it" },
-    { title: "Smart Choices", text: "Smart choices mean thinking carefully before using your money. It helps you use money in a way that's good for you now and later " },
-    { title: "Wants Later", text: "Wants later are things you don't need right now, but want to save for. Like a skateboard or a big Lego set" },
-    { title: "Money Goal", text: "A money goal is something you want to save for, like a new toy. You can keep track of how close you are" },
-    { title: "Save, Spend, Share", text: "These are the three main things you can do with money: save for later, spend on something now, or share with someone who needs help" },
-    { title: "Price", text: "Price is how much something costs. You need to check the price before deciding to buy something" },
-    { title: "Needs vs. Wants", text: "Needs are things you must have, like food and clothes. Wants are things you'd like to have, like toys or candy" },
-    { title: "Spending Plan", text: "A spending plan helps you decide how much money to use now and how much to save. It's like a map for your money" },
-    { title: "Smart Shopper", text: "A smart shopper compares prices, looks for sales, and doesn't buy things too quickly. It helps you spend your money wisely" },
-    { title: "Money Habit", text: "A money habit is something you do with money regularly, like always saving a part of what you get. Good money habits help you grow up to be smart with money" },
+    { title: "Budget", text: "A budget is like your family's plan for the month! It helps you decide how much money to spend and how much to save. Just like in the game, you can split your money between needs, wants, and savings to stay on track." },
+    { title: "Money", text: "Money is what we use to buy things we need or want. In Klagenfurt, you can earn money through choices or tasks – just like in real life where you can earn by helping out!" },
+    { title: "Saving", text: "Saving means setting money aside and not using it right away. It's smart to save for something special or for when surprises happen – you'll thank yourself later!" },
+    { title: "Piggy Bank", text: " A piggy bank is a small, safe place to store your savings at home. Just like your pocket money in the game, it's the perfect start to managing your money." },
+    { title: "Allowance", text: "An allowance is money you receive regularly, often for helping around the house. You get to decide: spend a little now or save it for something exciting later." },
+    { title: "Smart Choices", text: "Being a financial detective means making smart choices! Think before spending: is this helpful now, or would it be smarter to wait?" },
+    { title: "Wants Later", text: "Some things are worth the wait. Wants later are items like a skateboard or game – not something you need right away, but something you can save toward." },
+    { title: "Money Goal", text: "Set a goal! Whether it's a new toy or a family outing, saving becomes easier when you have something special in mind." },
+    { title: "Save, Spend, Share", text: "Money has three superpowers: saving for the future, spending on things you enjoy, and sharing with those in need. All three are part of being a great money detective!" },
+    { title: "Price", text: "Before buying anything, always check the price. Compare and decide – is it a good deal or should you wait?" },
+    { title: "Needs vs. Wants", text: "Understanding the difference between needs and wants is key! Needs are things you must have, like food or clothes. Wants are fun extras like candy or toys." },
+    { title: "Spending Plan", text: "Just like your route through Klagenfurt, a spending plan helps guide your money choices. It helps you balance what you use now and what you save." },
+    { title: "Smart Shopper", text: "Being a smart shopper means looking for deals, comparing prices, and not rushing into spending. It's a great detective skill!" },
+    { title: "Money Habit", text: "Money habits are routines you follow – like saving a little bit every time you get money. The more you practice, the better you get!" },
+    { title: "Tracking Expenses", text: "Keep a little notebook or chart to write down what you spend. Knowing where your money goes helps you make better choices. Just like in our game, it helps you understand spendings and earnings better. Noone has a calculator in their head." },
+    { title: "Sales and Discounts", text: "Watch for special offers or sales. Waiting a bit could mean getting what you want for less!" },
+    { title: "Money and Time", text: "Time is like money – how you spend it matters! Managing your time well helps you manage your money, too." },
+    { title: "Investing Basics", text: "TInvesting means putting your money to work so it grows over time. It's like planting a money tree for the future!" },
   ];
 
   function showSection(sectionToShow) {
