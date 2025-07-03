@@ -605,6 +605,12 @@ button.back-btn:focus-visible {
   margin-bottom: 20px;  
   }
 
+#child-budget-page,
+#parent-budget-page {
+  padding-top: 6vh;       
+  padding-bottom: 4vh;
+  box-sizing: border-box;
+}
   .centered-budget-selection {
   display: flex;
   flex-direction: column;
@@ -613,6 +619,8 @@ button.back-btn:focus-visible {
   height: 100vh;
   gap: 1rem;
 }
+
+
 
 #adult-budget-selection {
   position: fixed;       /* „priklijuojam“ prie lango */
