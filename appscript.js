@@ -32,7 +32,7 @@ const budgetHeading = document.getElementById('budget-heading');
 const introScreen = document.getElementById('intro-screen');
 const btnStartGame = document.getElementById('btn-start-game');
 // --- NEW ---
-let parentInitialBudget = 400;   // keičiasi tarp 400 ir 200
+let parentInitialBudget = null;   // keičiasi tarp 400 ir 200
 // --- /NEW ---
 
 
@@ -344,11 +344,41 @@ childBudgetBtn.addEventListener('click', () => {
     });
 
 parentBudgetBtn.addEventListener('click', () => {
-  budgetSelection.style.display = 'none';
-  document.getElementById('adult-budget-selection').style.display = 'flex';
-  toggleGeneralBackButton(false);
-  budgetHeading.style.display = 'none';
+   budgetSelection.style.display = 'none';
+budgetHeading.style.display   = 'none';
+
+  // jei jau turime pasirinkimą – šokam tiesiai į lentelę
+  if (parentInitialBudget !== null) {
+    openParentBudgetPage();
+  } else {
+    // kitaip rodome sub‑selection
+    document.getElementById('adult-budget-selection').style.display = 'flex';
+    toggleGeneralBackButton(false);
+  }
 });
+
+document.getElementById('one-adult-btn').addEventListener('click', () => {
+  parentInitialBudget = 400;
+  resetParentBudget();
+  openParentBudgetPage();
+});
+
+document.getElementById('two-adults-btn').addEventListener('click', () => {
+  parentInitialBudget = 200;
+  resetParentBudget();
+  openParentBudgetPage();
+});
+
+document.getElementById('change-adult-option').addEventListener('click', () => {
+  // grįžtam į sub‑selection
+  parentBudgetPage.style.display = 'none';
+  document.getElementById('adult-budget-selection').style.display = 'flex';
+  // jei nori, gali anuliuoti seną pasirinkimą:
+  // parentInitialBudget = null;
+  toggleGeneralBackButton(false);
+});
+
+
 
 btnBackFromFamilyBudget.addEventListener('click', () => {
   familyBudgetPage.style.display = 'none';
@@ -438,14 +468,39 @@ function openParentBudgetPage() {
   document.getElementById('adult-budget-selection').style.display = 'none';
   parentBudgetPage.style.display = 'block';
   parentBudgetPage.setAttribute('aria-hidden', 'false');
-  // Perrašome pradinį skaičių antraštėje
-  document.getElementById('pbp-budgetAmount').textContent = parentInitialBudget.toFixed(2);
+
+  // atnaujinam sumas pagal pasirinktą skaičių
+  document.getElementById('pbp-budgetAmount').textContent    = parentInitialBudget.toFixed(2);
   document.getElementById('pbp-remainingAmount').textContent = parentInitialBudget.toFixed(2);
-  // paleidžiam skaičiavimą, kad atsinaujintų lentelė bei sumos
+
+  // priverstinis skaičiavimas, jei reikia
   document.querySelectorAll('.pbp-current-input')[0].dispatchEvent(new Event('input'));
 }
+
 // --- /NEW ---
 
+
+/* ==== NEIGIAMŲ SKAIČIŲ DRAUDIMAS ==== */
+function enforceNonNegativeInputs() {
+  document
+    .querySelectorAll(
+      '.pbp-current-input, .pbp-additional-input, ' +  
+      '.cbp-current-input, .cbp-additional-input'      
+    )
+    .forEach(inp => {
+      inp.setAttribute('min', '0');
+      inp.addEventListener('keydown', e => {
+        if (e.key === '-' || e.key === '+' || e.key.toLowerCase() === 'e') {
+          e.preventDefault();
+        }
+      });
+      inp.addEventListener('input', () => {
+        const val = parseFloat(inp.value);
+        if (!isNaN(val) && val < 0) inp.value = 0;
+      });
+    });
+}
+document.addEventListener('DOMContentLoaded', enforceNonNegativeInputs);
 
 //family
 
@@ -566,6 +621,7 @@ function createBudgetCircle() {
         text.setAttribute('y', textPos.y);
         text.setAttribute('text-anchor', 'middle');
         text.setAttribute('dominant-baseline', 'central');
+        text.setAttribute('textLength', '110');
         text.textContent = section.label;
       
         group.appendChild(path);
@@ -610,7 +666,7 @@ document.addEventListener('DOMContentLoaded', () => {
     createInfoPanels();
 });
 
-//lentelės su tipais
+
 
 
 
