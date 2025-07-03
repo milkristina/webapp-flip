@@ -673,10 +673,8 @@ button.back-btn:focus-visible {
 
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;        /* 👈 centruoja */
-  padding: 40px 20px;    /* 👈 neleidžia prilipti prie kraštų */
-  box-sizing: border-box;
-
+  margin: 0 auto;
+  padding-top: 15%;
 
 }
 
@@ -686,11 +684,24 @@ button.back-btn:focus-visible {
     background: rgb(255, 255, 255);
     padding: 2rem;
     opacity: 1;
+    width: 100%;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  box-sizing: border-box;
 }
 
 .header {
     text-align: center;
     margin-bottom: 2rem;
+}
+@media (max-width: 768px) {
+  .container {
+    padding: 6vh 4vw;
+  }
+  .card {
+    font-size: 0.95rem;
+  }
 }
 
 .income-badge {
