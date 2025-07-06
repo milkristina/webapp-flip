@@ -371,7 +371,7 @@ document.addEventListener('DOMContentLoaded', function () {
             text = "I love yellow!";
         }
 
-        openModalFn(title, text, true);
+        openModalFn(title, text, true, false);
     }
 }
 
