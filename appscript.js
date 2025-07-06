@@ -1,5 +1,4 @@
 (() => {
-  // Element references
   const home = document.getElementById('home');
   const tipsPage = document.getElementById('tips-page');
   const budgetPage = document.getElementById('budget-page');
@@ -18,27 +17,19 @@
   const btnRules = document.getElementById('btn-rules');
   const rulesPage = document.getElementById('rules-page');
   const btnBackFromRules = document.getElementById('btn-back-from-rules');
-  // Element references (pridėkite žemiau jau esančių)
   const childBudgetBtn   = document.getElementById('child-budget-btn');
   const childBudgetPage  = document.getElementById('child-budget-page');
-const parentBudgetBtn   = document.getElementById('parent-budget-btn');
-const parentBudgetPage  = document.getElementById('parent-budget-page');
-// mygtukai
-const btnBackFromFamilyBudget = document.getElementById('btn-back-from-family-budget');
-const btnBackFromChildBudget = document.getElementById('btn-back-from-child-budget');
-const btnBackFromParentBudget = document.getElementById('btn-back-from-parent-budget');
-const budgetHeading = document.getElementById('budget-heading');
-//start game
-const introScreen = document.getElementById('intro-screen');
-const btnStartGame = document.getElementById('btn-start-game');
-// --- NEW ---
-let parentInitialBudget = null;   // keičiasi tarp 400 ir 200
+  const parentBudgetBtn   = document.getElementById('parent-budget-btn');
+  const parentBudgetPage  = document.getElementById('parent-budget-page');
+  const btnBackFromFamilyBudget = document.getElementById('btn-back-from-family-budget');
+  const btnBackFromChildBudget = document.getElementById('btn-back-from-child-budget');
+  const btnBackFromParentBudget = document.getElementById('btn-back-from-parent-budget');
+  const budgetHeading = document.getElementById('budget-heading');
+  const introScreen = document.getElementById('intro-screen');
+  const btnStartGame = document.getElementById('btn-start-game');
+  let parentInitialBudget = null;   // keičiasi tarp 400 ir 200
 // --- /NEW ---
-
-
-
-
-  // Data for tips
+  
   const tipsData = [
     { title: "Budget", text: "A budget is like your family's plan for the month! It helps you decide how much money to spend and how much to save. Just like in the game, you can split your money between needs, wants, and savings to stay on track." },
     { title: "Money", text: "Money is what we use to buy things we need or want. In Klagenfurt, you can earn money through choices or tasks – just like in real life where you can earn by helping out!" },
@@ -99,8 +90,9 @@ let parentInitialBudget = null;   // keičiasi tarp 400 ir 200
     modal.setAttribute('aria-hidden', 'false');
     modalCloseBtn.focus();
     document.body.style.overflow = 'hidden';
+    const footer = document.getElementById('modal-footer');
+    footer.style.display = showRestart ? 'block' : 'none';
   }
-
 
   function closeModal() {
     modal.classList.remove('active');
@@ -122,10 +114,10 @@ let parentInitialBudget = null;   // keičiasi tarp 400 ir 200
   btnBudget.addEventListener('click', () => {
     showSection(budgetPage);
     budgetSelection.style.display = 'flex';
-  familyBudgetPage.style.display = 'none';
-  childBudgetPage.style.display = 'none';
-  parentBudgetPage.style.display = 'none';
-  toggleGeneralBackButton(true);
+    familyBudgetPage.style.display = 'none';
+    childBudgetPage.style.display = 'none';
+    parentBudgetPage.style.display = 'none';
+    toggleGeneralBackButton(true);
   });
 
   btnBackFromTips.addEventListener('click', () => {
@@ -151,7 +143,6 @@ let parentInitialBudget = null;   // keičiasi tarp 400 ir 200
     budgetHeading.style.display = 'none';
   });
   
-
   btnRules.addEventListener('click', () => {
     showSection(rulesPage);
   });
@@ -206,8 +197,6 @@ let parentInitialBudget = null;   // keičiasi tarp 400 ir 200
     });
   })();
 
-
-
   //child
   document.addEventListener('DOMContentLoaded', function () {
         const budgetElement = document.getElementById('cbp-budgetAmount');
@@ -217,6 +206,7 @@ let parentInitialBudget = null;   // keičiasi tarp 400 ir 200
         const spentTotalElement = document.getElementById('cbp-spentTotal');
         const additionalTotalElement = document.getElementById('cbp-additionalTotal');
         let selectedColors = Array.from({ length: 6 }).fill(null);
+        
 
         const violetCountElement = document.getElementById('cbp-violetCount');
         const blueCountElement = document.getElementById('cbp-blueCount');
@@ -250,6 +240,33 @@ let parentInitialBudget = null;   // keičiasi tarp 400 ir 200
             yellowCountElement.textContent = yellowCount;
         }
 
+
+        function checkAndShowColorModal(selectedColors, openModalFn) {
+    if (selectedColors.every(c => c !== null)) {
+        const colorCounts = {
+            violet: selectedColors.filter(c => c === 'violet').length,
+            blue: selectedColors.filter(c => c === 'blue').length,
+            yellow: selectedColors.filter(c => c === 'yellow').length
+        };
+
+        const dominantColor = Object.entries(colorCounts).reduce((a, b) => a[1] >= b[1] ? a : b)[0];
+
+        let title, text;
+        if (dominantColor === 'violet') {
+            title = "Purple";
+            text = "I love purple!";
+        } else if (dominantColor === 'blue') {
+            title = "Blue";
+            text = "I love blue!";
+        } else if (dominantColor === 'yellow') {
+            title = "Yellow";
+            text = "I love yellow!";
+        }
+
+        openModalFn(title, text, true);
+    }
+}
+
         currentInputs.forEach(input => input.addEventListener('input', updateTotals));
         additionalInputs.forEach(input => input.addEventListener('input', updateTotals));
 
@@ -264,6 +281,7 @@ let parentInitialBudget = null;   // keičiasi tarp 400 ir 200
 
                 selectedColors[rowIndex] = color;
                 updateColorCounts();
+                checkAndShowColorModal(selectedColors, openModal);
             });
         });
 
@@ -281,7 +299,7 @@ childBudgetBtn.addEventListener('click', () => {
 
 //parent
 
-  document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
         const budgetElement = document.getElementById('pbp-budgetAmount');
         const currentInputs = document.querySelectorAll('.pbp-current-input');
         const additionalInputs = document.querySelectorAll('.pbp-additional-input');
@@ -289,7 +307,6 @@ childBudgetBtn.addEventListener('click', () => {
         const spentTotalElement = document.getElementById('pbp-spentTotal');
         const additionalTotalElement = document.getElementById('pbp-additionalTotal');
         let selectedColors = Array.from({ length: 6 }).fill(null);
-
         const violetCountElement = document.getElementById('pbp-violetCount');
         const blueCountElement = document.getElementById('pbp-blueCount');
         const yellowCountElement = document.getElementById('pbp-yellowCount');
@@ -322,6 +339,33 @@ childBudgetBtn.addEventListener('click', () => {
             yellowCountElement.textContent = yellowCount;
         }
 
+        function checkAndShowColorModal(selectedColors, openModalFn) {
+    if (selectedColors.every(c => c !== null)) {
+        const colorCounts = {
+            violet: selectedColors.filter(c => c === 'violet').length,
+            blue: selectedColors.filter(c => c === 'blue').length,
+            yellow: selectedColors.filter(c => c === 'yellow').length
+        };
+
+        const dominantColor = Object.entries(colorCounts).reduce((a, b) => a[1] >= b[1] ? a : b)[0];
+
+        let title, text;
+        if (dominantColor === 'violet') {
+            title = "Purple";
+            text = "I love purple!";
+        } else if (dominantColor === 'blue') {
+            title = "Blue";
+            text = "I love blue!";
+        } else if (dominantColor === 'yellow') {
+            title = "Yellow";
+            text = "I love yellow!";
+        }
+
+        openModalFn(title, text, true);
+    }
+}
+
+
         currentInputs.forEach(input => input.addEventListener('input', updateTotals));
         additionalInputs.forEach(input => input.addEventListener('input', updateTotals));
 
@@ -336,6 +380,7 @@ childBudgetBtn.addEventListener('click', () => {
 
                 selectedColors[rowIndex] = color;
                 updateColorCounts();
+                checkAndShowColorModal(selectedColors, openModal);
             });
         });
 
@@ -344,16 +389,12 @@ childBudgetBtn.addEventListener('click', () => {
     });
 
 parentBudgetBtn.addEventListener('click', () => {
-   budgetSelection.style.display = 'none';
-budgetHeading.style.display   = 'none';
-
-  // jei jau turime pasirinkimą – šokam tiesiai į lentelę
+  budgetSelection.style.display = 'none';
+  budgetHeading.style.display   = 'none';
   if (parentInitialBudget !== null) {
     openParentBudgetPage();
   } else {
-    // kitaip rodome sub‑selection
     document.getElementById('adult-budget-selection').style.display = 'flex';
-    toggleGeneralBackButton(false);
   }
 });
 
@@ -370,14 +411,11 @@ document.getElementById('two-adults-btn').addEventListener('click', () => {
 });
 
 document.getElementById('change-adult-option').addEventListener('click', () => {
-  // grįžtam į sub‑selection
   parentBudgetPage.style.display = 'none';
+  parentBudgetPage.setAttribute('aria-hidden', 'true');
   document.getElementById('adult-budget-selection').style.display = 'flex';
-  // jei nori, gali anuliuoti seną pasirinkimą:
-  // parentInitialBudget = null;
   toggleGeneralBackButton(false);
 });
-
 
 
 btnBackFromFamilyBudget.addEventListener('click', () => {
@@ -437,6 +475,8 @@ function resetParentBudget() {
   document.querySelectorAll('.pbp-color-circle.selected')
     .forEach(c => c.classList.remove('selected'));
 
+  selectedColors = Array.from({ length: 6 }).fill(null); // iš naujo!
+
   // atnaujiname biudžeto skaičiavimus
   document.dispatchEvent(new Event('input')); // suveiks updateTotals
 }
@@ -455,27 +495,33 @@ document.getElementById('two-adults-btn').addEventListener('click', () => {
   openParentBudgetPage();
 });
 
-// grįžimas atgal į pagrindinį pasirinkimą
-document.getElementById('btn-back-from-adult-budget-selection').addEventListener('click', () => {
-  document.getElementById('adult-budget-selection').style.display = 'none';
-  budgetSelection.style.display = 'flex';
-  toggleGeneralBackButton(true);
-  budgetHeading.style.display = 'block';
-});
 
 // atidaro tą patį puslapį, bet jau su nustatytu parentInitialBudget
 function openParentBudgetPage() {
-  document.getElementById('adult-budget-selection').style.display = 'none';
-  parentBudgetPage.style.display = 'block';
-  parentBudgetPage.setAttribute('aria-hidden', 'false');
+  const parentPage = document.getElementById('parent-budget-page');
+  const adultSelection = document.getElementById('adult-budget-selection');
 
-  // atnaujinam sumas pagal pasirinktą skaičių
-  document.getElementById('pbp-budgetAmount').textContent    = parentInitialBudget.toFixed(2);
+  // Saugiai paslepiam kitus pasirinkimus
+  adultSelection.style.display = 'none';
+  budgetSelection.style.display = 'none';
+
+  // Jei puslapis jau rodomas – nieko nedarom (kad nekartotų)
+  if (parentPage.style.display === 'block') {
+    console.log('Parent budget page already open – skipping duplicate show.');
+    return;
+  }
+
+  parentPage.style.display = 'block';
+  toggleGeneralBackButton(false);  
+
+  parentPage.setAttribute('aria-hidden', 'false');
+
+  document.getElementById('pbp-budgetAmount').textContent = parentInitialBudget.toFixed(2);
   document.getElementById('pbp-remainingAmount').textContent = parentInitialBudget.toFixed(2);
 
-  // priverstinis skaičiavimas, jei reikia
   document.querySelectorAll('.pbp-current-input')[0].dispatchEvent(new Event('input'));
 }
+
 
 // --- /NEW ---
 
@@ -667,9 +713,43 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+document.getElementById('parent-budget-btn').addEventListener('click', () => {
+  budgetSelection.style.display = 'none';
+  budgetHeading.style.display   = 'none';
 
+  if (parentInitialBudget !== null) {
+    openParentBudgetPage();
+  } else {
+    document.getElementById('adult-budget-selection').style.display = 'flex';
+    toggleGeneralBackButton(false); 
+  }
+});
 
+document.getElementById('restart-btn').addEventListener('click', () => {
+  closeModal();
+  // Grąžina į pradžios ekraną
+  introScreen.style.display = 'flex';
+  showSection(introScreen);
+});
 
+function closeModal() {
+  modal.classList.remove('active');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+
+  const footer = document.getElementById('modal-footer');
+  footer.style.display = 'none';
+
+  if (tipsPage.style.display === 'flex') {
+    const firstTipBtn = tipsList.querySelector('button.tip-btn');
+    firstTipBtn?.focus();
+  } else {
+    btnTips.focus();
+  }
+}
 
 
 })();
+
+
+// spalvos
