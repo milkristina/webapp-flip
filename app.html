@@ -26,65 +26,90 @@
 <section id="intro-screen" class="intro-screen" role="main">
   <div class="intro-content">
     <h1>Welcome to the FLiP's Detective Agency!</h1>
-  
     <button id="btn-start-game" class="start-btn">Start Game</button>
   </div>
-</section>
-    
-    <section id="home" role="main" style="display: none;">
+</section> 
+<section id="home" role="main" style="display: none;">
         <button id="btn-tips" type="button" aria-label="Go to Tips section">FINANCAL TIPS</button>
         <button id="btn-rules" type="button" aria-label="Go to Rules section">RULES</button>
         <button id="btn-budget" type="button" aria-label="Go to Budget Tracking section">BUDGET</button>
-        
     </section>
-
     <section id="tips-page" role="main" style="display: none;" aria-hidden="true">
         <div id="tips-list" role="list" aria-label="Tips list"></div>
         <footer id="tips-footer">
             <button id="btn-back-from-tips" type="button" aria-label="Back to home">Back</button>
         </footer>
     </section>
-
  <section id="rules-page" role="main" style="display: none;" aria-hidden="true">
         <h2 id="rules-heading">Game Rules</h2>
+        <div id="rules-content-wrapper">
         <div id="rules-content">
-            <ol>
-                <li><strong>Start:</strong>
-                    <ul>
-                        <li>Kids receive €20, adults €400</li>
-                        <li>Kids choose colors and get 6 matching situation cards</li>
-                        <li>Place figures on the starting field of their color</li>
-                    </ul>
-                </li>
-                <li><strong>Game flow (clockwise):</strong>
-                    <ul>
-                        <li>Draw a card, read it aloud, make a decision</li>
-                        <li>Move your figure, pay the amount</li>
-                        <li>Knowledge fields: answer a question,  earn €1 for correct answers</li>
-                        <li>Track your budget and colors on your sheet</li>
-                    </ul>
-                </li>
-                <li><strong>End of game:</strong>
-                    <ul>
-                        <li>Once each child has played 6 cards</li>
-                        <li>Final reflection: "What could I have done differently?"</li>
-                    </ul>
-                </li>
-            </ol>
-        </div>
+  <h3>Getting Started:</h3>
+  <ol>
+    <li>
+      <strong>Set Up Budgets:</strong>
+      <ul>
+        <li>Adults: €400 total (or €200 each if two are playing).</li>
+        <li>Kids: €20 each.</li>
+        <li>An adult explains the family budget sheet.</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Choose Colors:</strong>
+      <ul>
+        <li>Each player picks a color and gets 6 matching Situation Cards.</li>
+        <li>White cards are for adults.</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Start the Game:</strong>
+      <ul>
+        <li>Put detective figures on the colored start fields.</li>
+        <li>Adults play first to demonstrate a turn.</li>
+      </ul>
+    </li>
+  </ol>
+  <h3>Taking a Turn:</h3>
+  <ol>
+    <li>Draw your Situation Card and read it aloud.</li>
+    <li>Discuss options with others (optional).</li>
+    <li>Make your choice and explain why.</li>
+    <li>Move your piece the number of steps shown on the card.</li>
+    <li>Subtract the cost from your budget.</li>
+    <li>
+      Landed on a Knowledge Field?
+      <ul>
+        <li>Draw a Knowledge Card.</li>
+        <li>Another player reads the question.</li>
+        <li>Correct answer = +€1.</li>
+      </ul>
+    </li>
+    <li>Record your budget and color choices on your budget sheet.</li>
+  </ol>
+  <h3>Game End:</h3>
+  <ul>
+    <li>After 6 cards per player, the game ends.</li>
+    <li>If your budget runs out:
+      <ul>
+        <li>Keep playing!</li>
+        <li>Only take free paths.</li>
+      </ul>
+    </li>
+    <li>Discuss: <em>"What could we have done differently?"</em></li>
+  </ul>
+</div>
+</div>
         <footer id="rules-footer">
             <button class="back-btn" id="btn-back-from-rules" type="button" aria-label="Back to home">Back</button>
         </footer>
-    </section>
-    <!-- Budget --> 
+</section>
     <section id="budget-page" role="main" style="display: none;" aria-hidden="true" class="budget-container">
         <h2 id="budget-heading">Choose Your Budget</h2>
         <div id="budget-selection" class="budget-selection">
             <button class="budget-type-btn" id="family-budget-btn">Family Budget</button>
             <button class="budget-type-btn" id="parent-budget-btn">Adult Budget</button>
             <button class="budget-type-btn" id="child-budget-btn">Child Budget</button>
-        </div>
-    
+        </div>   
  <section id="family-budget-page" aria-hidden="true" style="display: none;">
   <div class="container">
     <div class="card">
@@ -343,11 +368,6 @@
     <button class="budget-type-btn" id="one-adult-btn">One adult</button>
     <button class="budget-type-btn" id="two-adults-btn">Two adults</button>
 </div>
-
-
-<!-- Color Result Modal -->
-
-
 </main>
 
 <div id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc" tabindex="-1">
@@ -361,9 +381,8 @@
     </div>
 </div>
 
-
 <script src="appscript.js" defer></script>
-    <script src="figurescript.js" defer></script>
+<script src="figurescript.js" defer></script>
 <script src="familybudget.js" defer></script>
 <script src="nonegavite.js" defer></script>
 </body>

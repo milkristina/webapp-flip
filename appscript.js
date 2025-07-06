@@ -351,7 +351,6 @@ openModalFn(title, text, true, false, colorHex);
     }
 }
 
-
         currentInputs.forEach(input => input.addEventListener('input', updateTotals));
         additionalInputs.forEach(input => input.addEventListener('input', updateTotals));
 
@@ -451,44 +450,31 @@ btnStartGame.addEventListener('click', () => {
 });
 
 
-// --- NEW ---
-// pagalbinė: nuvalo lentelę ir spalvas
 function resetParentBudget() {
   document.querySelectorAll('.pbp-current-input, .pbp-additional-input')
     .forEach(inp => inp.value = 0);
-
-  // nuimame pažymėtas spalvas
   document.querySelectorAll('.pbp-color-circle.selected')
     .forEach(c => c.classList.remove('selected'));
 
-  selectedColors = Array.from({ length: 6 }).fill(null); // iš naujo!
-
-  // atnaujiname biudžeto skaičiavimus
-  document.dispatchEvent(new Event('input')); // suveiks updateTotals
+  selectedColors = Array.from({ length: 6 }).fill(null); 
+  document.dispatchEvent(new Event('input')); 
 }
 
 function resetChildBudget() {
   document.querySelectorAll('.cbp-current-input, .cbp-additional-input')
     .forEach(inp => inp.value = 0);
-
-  // nuimame pažymėtas spalvas
   document.querySelectorAll('.cbp-color-circle.selected')
     .forEach(c => c.classList.remove('selected'));
-
-  selectedColors = Array.from({ length: 6 }).fill(null); // iš naujo!
-
-  // atnaujiname biudžeto skaičiavimus
-  document.dispatchEvent(new Event('input')); // suveiks updateTotals
+  selectedColors = Array.from({ length: 6 }).fill(null); 
+  document.dispatchEvent(new Event('input')); 
 }
 
-// vienas suaugęs – 400 €
 document.getElementById('one-adult-btn').addEventListener('click', () => {
   parentInitialBudget = 400;
   resetParentBudget();
   openParentBudgetPage();
 });
 
-// du suaugę – 200 €
 document.getElementById('two-adults-btn').addEventListener('click', () => {
   parentInitialBudget = 200;
   resetParentBudget();
@@ -496,16 +482,12 @@ document.getElementById('two-adults-btn').addEventListener('click', () => {
 });
 
 
-// atidaro tą patį puslapį, bet jau su nustatytu parentInitialBudget
 function openParentBudgetPage() {
   const parentPage = document.getElementById('parent-budget-page');
   const adultSelection = document.getElementById('adult-budget-selection');
-
-  // Saugiai paslepiam kitus pasirinkimus
   adultSelection.style.display = 'none';
   budgetSelection.style.display = 'none';
-
-  // Jei puslapis jau rodomas – nieko nedarom (kad nekartotų)
+  
   if (parentPage.style.display === 'block') {
     console.log('Parent budget page already open – skipping duplicate show.');
     return;
@@ -536,11 +518,7 @@ document.getElementById('parent-budget-btn').addEventListener('click', () => {
 });
 
 document.getElementById('restart-btn').addEventListener('click', () => {
-  closeModal();
-  introScreen.style.display = 'flex';
-  showSection(introScreen);
-  resetParentBudget();
-  resetChildBudget();
+  location.reload();
 });
 
 function closeModal() {

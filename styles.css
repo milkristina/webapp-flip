@@ -385,12 +385,27 @@ button.back-btn:focus-visible {
 #rules-page {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   height: 100vh;
-  padding: 20px; 
-  box-sizing: border-box; 
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden; 
 }
+
+#rules-heading {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#rules-content-wrapper {
+  flex: 1;
+  width: 100%;
+  overflow-y: auto;
+  padding-right: 10px;
+  box-sizing: border-box;
+}
+
 #rules-content {
   background: rgba(0, 180, 240, 0.9);
   border-radius: 16px;
@@ -400,30 +415,30 @@ button.back-btn:focus-visible {
   font-size: 1.2rem;
   line-height: 1.6;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  margin-bottom: 30px; 
+  margin: 0 auto 30px auto;
   color: #000000;
   text-align: left;
 }
 
 #rules-content p {
-  margin-bottom: 12px; 
+  margin-bottom: 12px;
 }
 
-#rules-content ol, 
+#rules-content ol,
 #rules-content ul {
-   padding-left: 24px;
+  padding-left: 24px;
   margin-bottom: 16px;
 }
 
 #rules-content li {
-  margin-bottom: 6px; 
+  margin-bottom: 6px;
 }
 
 #rules-footer {
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 10px 0; 
+  padding: 10px 0;
 }
 
 .back-btn {
@@ -638,8 +653,6 @@ button.back-btn:focus-visible {
   z-index: 3;
 }
 
-
-
 .intro-screen {
   position: fixed;
   top: 0;
@@ -706,7 +719,6 @@ button.back-btn:focus-visible {
     font-size: 0.95rem;
   }
 }
-
 
 .header {
     text-align: center;
@@ -889,6 +901,3 @@ button.back-btn:focus-visible {
         transform: rotate(0deg) scale(1);
     }
 }
-
-
-/*Lentelės su tipais*/

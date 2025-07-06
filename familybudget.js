@@ -115,10 +115,33 @@ function createBudgetCircle() {
         text.setAttribute('x', textPos.x);
         text.setAttribute('y', textPos.y);
         text.setAttribute('text-anchor', 'middle');
-        text.setAttribute('dominant-baseline', 'central');
-        text.setAttribute('textLength', '110');
-        text.textContent = section.label;
-      
+        text.setAttribute('dominant-baseline', 'middle');
+        text.style.fontSize = '12px';
+        text.style.fill = '#000';
+        const words = section.label.split(' ');
+        const maxCharsPerLine = 18; 
+        let lines = [];
+        let currentLine = '';
+
+        words.forEach(word => {
+        const testLine = currentLine ? currentLine + ' ' + word : word;
+        if (testLine.length > maxCharsPerLine) {
+            lines.push(currentLine);
+            currentLine = word;
+        } else {
+            currentLine = testLine;
+        }
+        });
+        if (currentLine) lines.push(currentLine);
+
+        lines.forEach((line, index) => {
+        const tspan = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+        tspan.setAttribute('x', textPos.x);
+        tspan.setAttribute('dy', index === 0 ? '0' : '1.2em'); // 1.2em tarp eilučių
+        tspan.textContent = line;
+        text.appendChild(tspan);
+        });
+    
         group.appendChild(path);
         group.appendChild(text);
         svg.appendChild(group);
