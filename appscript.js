@@ -83,15 +83,25 @@
     });
   }
 
-  function openModal(title, text) {
+  function openModal(title, text, showRestart = false, showCloseBtn = true) {
     modalTitle.textContent = title;
     modalDesc.textContent = text;
     modal.classList.add('active');
     modal.setAttribute('aria-hidden', 'false');
     modalCloseBtn.focus();
     document.body.style.overflow = 'hidden';
-    const footer = document.getElementById('modal-footer');
-    footer.style.display = showRestart ? 'block' : 'none';
+    // Rodyti arba slėpti Restart mygtuką
+  const footer = document.getElementById('modal-footer');
+  footer.style.display = showRestart ? 'block' : 'none';
+
+  // Rodyti arba slėpti "×" mygtuką
+  const closeBtn = document.getElementById('modal-close-btn');
+  closeBtn.style.display = showCloseBtn ? 'inline-block' : 'none';
+
+  // Fokusas, tik jei rodomas
+  if (showCloseBtn) {
+    closeBtn.focus();
+  }
   }
 
   function closeModal() {
@@ -263,7 +273,7 @@
             text = "I love yellow!";
         }
 
-        openModalFn(title, text, true);
+        openModalFn(title, text, true, false);
     }
 }
 
