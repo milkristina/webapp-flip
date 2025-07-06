@@ -27,8 +27,11 @@
   const budgetHeading = document.getElementById('budget-heading');
   const introScreen = document.getElementById('intro-screen');
   const btnStartGame = document.getElementById('btn-start-game');
-  let parentInitialBudget = null;   // keičiasi tarp 400 ir 200
-// --- /NEW ---
+  let parentInitialBudget = null;   
+  let parentSelectedColors = Array.from({ length: 6 }).fill(null);
+  let childSelectedColors = Array.from({ length: 6 }).fill(null);
+
+  
   
   const tipsData = [
     { title: "Budget", text: "A budget is like your family's plan for the month! It helps you decide how much money to spend and how much to save. Just like in the game, you can split your money between needs, wants, and savings to stay on track." },
@@ -83,26 +86,27 @@
     });
   }
 
-  function openModal(title, text, showRestart = false, showCloseBtn = true) {
-    modalTitle.textContent = title;
-    modalDesc.textContent = text;
-    modal.classList.add('active');
-    modal.setAttribute('aria-hidden', 'false');
-    modalCloseBtn.focus();
-    document.body.style.overflow = 'hidden';
-    // Rodyti arba slėpti Restart mygtuką
-  const footer = document.getElementById('modal-footer');
-  footer.style.display = showRestart ? 'block' : 'none';
+function openModal(title, text, showRestart = false, showCloseBtn = true, bgColor = null) {
+  modalTitle.textContent = title;
+  modalDesc.textContent = text;
+  modal.classList.add('active');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
 
-  // Rodyti arba slėpti "×" mygtuką
+  document.getElementById('modal-footer').style.display = showRestart ? 'block' : 'none';
+
   const closeBtn = document.getElementById('modal-close-btn');
   closeBtn.style.display = showCloseBtn ? 'inline-block' : 'none';
+  if (showCloseBtn) closeBtn.focus();
 
-  // Fokusas, tik jei rodomas
-  if (showCloseBtn) {
-    closeBtn.focus();
-  }
-  }
+  const modalContent = document.querySelector('.modal-content');
+  const color = bgColor ?? 'var(--modal-text-bg)';
+
+  modalContent.style.background = color;   
+  restartBtn.style.background  = color;    
+  restartBtn.style.borderColor = color; 
+}
+
 
   function closeModal() {
     modal.classList.remove('active');
@@ -176,37 +180,6 @@
     }
   });
 
-  // Randomly position background images 
-  (() => {
-    const imgs = document.querySelectorAll('.bg-img');
-    const gridSize = Math.ceil(Math.sqrt(imgs.length)); 
-    const usedPositions = new Set();
-
-    imgs.forEach(() => {
-      let xCell, yCell;
-      let positionKey;
-
-      do {
-        xCell = Math.floor(Math.random() * gridSize);
-        yCell = Math.floor(Math.random() * gridSize);
-        positionKey = `${xCell},${yCell}`;
-      } while (usedPositions.has(positionKey));
-      usedPositions.add(positionKey);
-
-      const spacing = 100 / gridSize;
-      const randomOffsetX = Math.random() * (spacing - 10);
-      const randomOffsetY = Math.random() * (spacing - 10);
-
-      const left = xCell * spacing + randomOffsetX;
-      const top = yCell * spacing + randomOffsetY;
-
-      const img = imgs[usedPositions.size - 1];
-      img.style.position = 'absolute';
-      img.style.left = `${left}vw`;
-      img.style.top = `${top}vh`;
-    });
-  })();
-
   //child
   document.addEventListener('DOMContentLoaded', function () {
         const budgetElement = document.getElementById('cbp-budgetAmount');
@@ -263,17 +236,19 @@
 
         let title, text;
         if (dominantColor === 'violet') {
-            title = "Purple";
-            text = "I love purple!";
+            title = "The visionary with a plan";
+            text = "Purple thinks ahead and makes decisions consciously and thoughtfully. It's okay to spend a bit – as long as it's worth it. Those who choose purple think practically and creatively, invest inquality, security, or joy – for themselves or for others. Purple knows their own style and likes to stay one step ahead";
         } else if (dominantColor === 'blue') {
-            title = "Blue";
-            text = "I love blue!";
+            title = "The visionary with a plan";
+            text = "Blue takes a close look at the situation and looks for a solution that fits. Not too expensive, not too risky – just doable. Blue often finds clever ideas that work without having to be perfect. Those who choose blue decide practically, flexibly, and with a good sense of what's needed in the moment.";
         } else if (dominantColor === 'yellow') {
-            title = "Yellow";
-            text = "I love yellow!";
+            title = "The relaxed decision-maker";
+            text = "Yellow thinks ahead before something happens – and sometimes chooses to go without, save for later, or wait. Those who choose yellow don't need much to get by Yellow values calm, inner clarity, or their own path. The goal? Make do with what's available – and still be content.";
         }
 
-        openModalFn(title, text, true, false);
+        const colorHex = { violet: '#8a2be2', blue: '#3498db', yellow: '#ffd700' }[dominantColor];
+        openModalFn(title, text, true, false, colorHex);
+
     }
 }
 
@@ -361,17 +336,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
         let title, text;
         if (dominantColor === 'violet') {
-            title = "Purple";
-            text = "I love purple!";
+            title = "The visionary with a plan";
+            text = "Purple thinks ahead and makes decisions consciously and thoughtfully. It's okay to spend a bit – as long as it's worth it. Those who choose purple think practically and creatively, invest inquality, security, or joy – for themselves or for others. Purple knows their own style and likes to stay one step ahead";
         } else if (dominantColor === 'blue') {
-            title = "Blue";
-            text = "I love blue!";
+            title = "The visionary with a plan";
+            text = "Blue takes a close look at the situation and looks for a solution that fits. Not too expensive, not too risky – just doable. Blue often finds clever ideas that work without having to be perfect. Those who choose blue decide practically, flexibly, and with a good sense of what's needed in the moment.";
         } else if (dominantColor === 'yellow') {
-            title = "Yellow";
-            text = "I love yellow!";
+            title = "The relaxed decision-maker";
+            text = "Yellow thinks ahead before something happens – and sometimes chooses to go without, save for later, or wait. Those who choose yellow don't need much to get by Yellow values calm, inner clarity, or their own path. The goal? Make do with what's available – and still be content.";
         }
+        const colorHex = { violet: '#8a2be2', blue: '#3498db', yellow: '#ffd700' }[dominantColor];
+openModalFn(title, text, true, false, colorHex);
 
-        openModalFn(title, text, true, false);
     }
 }
 
@@ -491,6 +467,20 @@ function resetParentBudget() {
   document.dispatchEvent(new Event('input')); // suveiks updateTotals
 }
 
+function resetChildBudget() {
+  document.querySelectorAll('.cbp-current-input, .cbp-additional-input')
+    .forEach(inp => inp.value = 0);
+
+  // nuimame pažymėtas spalvas
+  document.querySelectorAll('.cbp-color-circle.selected')
+    .forEach(c => c.classList.remove('selected'));
+
+  selectedColors = Array.from({ length: 6 }).fill(null); // iš naujo!
+
+  // atnaujiname biudžeto skaičiavimus
+  document.dispatchEvent(new Event('input')); // suveiks updateTotals
+}
+
 // vienas suaugęs – 400 €
 document.getElementById('one-adult-btn').addEventListener('click', () => {
   parentInitialBudget = 400;
@@ -533,196 +523,6 @@ function openParentBudgetPage() {
 }
 
 
-// --- /NEW ---
-
-
-/* ==== NEIGIAMŲ SKAIČIŲ DRAUDIMAS ==== */
-function enforceNonNegativeInputs() {
-  document
-    .querySelectorAll(
-      '.pbp-current-input, .pbp-additional-input, ' +  
-      '.cbp-current-input, .cbp-additional-input'      
-    )
-    .forEach(inp => {
-      inp.setAttribute('min', '0');
-      inp.addEventListener('keydown', e => {
-        if (e.key === '-' || e.key === '+' || e.key.toLowerCase() === 'e') {
-          e.preventDefault();
-        }
-      });
-      inp.addEventListener('input', () => {
-        const val = parseFloat(inp.value);
-        if (!isNaN(val) && val < 0) inp.value = 0;
-      });
-    });
-}
-document.addEventListener('DOMContentLoaded', enforceNonNegativeInputs);
-
-//family
-
-const budgetData = [
-    {
-        id: 'daily',
-        label: 'Money for everyday life',
-        panelTitle: 'Fixed Expenses',
-        color: '#F59E0B',
-        items: [
-            'Housing (rent incl. operating costs)',
-            'Food, hygiene & medicine',
-            'Transport (car, bus, pass, train journeys)',
-            'Communication (mobile phone, internet)',
-            'Streaming services (Spotify, Netflix)',
-        ],
-        startAngle: 180,
-        endAngle: 360
-    },
-    {
-        id: 'joy',
-        label: 'Money for things that bring joy',
-        panelTitle: 'Variable Expenses',
-        color: '#EC4899',
-        items: [
-            'Holiday',
-            'Shopping',
-            'Eating out/Going out',
-            'Entertainment',
-            'Day trips',
-            'Pocket money'
-        ],
-        startAngle: 75,
-        endAngle: 180
-    },
-    {
-        id: 'savings',
-        label: 'Money for the future',
-        panelTitle: 'Savings',
-        color: '#22C55E',
-        items: [
-            'Money set aside',
-            'Emergency fund'
-        ],
-        startAngle: 0,
-        endAngle: 75
-    }
-];
-
-
-function createSVGPath(startAngle, endAngle, radius) {
-    const start = (startAngle - 90) * (Math.PI / 180);
-    const end = (endAngle - 90) * (Math.PI / 180);
-    
-    const x1 = 200 + radius * Math.cos(start);
-    const y1 = 200 + radius * Math.sin(start);
-    const x2 = 200 + radius * Math.cos(end);
-    const y2 = 200 + radius * Math.sin(end);
-    
-    const largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
-    
-    return [
-        "M", 200, 200,
-        "L", x1, y1,
-        "A", radius, radius, 0, largeArcFlag, 1, x2, y2,
-        "Z"
-    ].join(" ");
-}
-
-
-function getTextPosition(startAngle, endAngle, radius = 120) {
-    const midAngle = ((startAngle + endAngle) / 2 - 90) * (Math.PI / 180);
-    const x = 200 + radius * Math.cos(midAngle);
-    const y = 200 + radius * Math.sin(midAngle);
-    return { x, y };
-}
-
-
-function handleSectionHover(sectionId, isHovering) {
-    const panels = document.querySelectorAll('.info-panel');
-    
-    panels.forEach(panel => {
-        if (isHovering) {
-            if (panel.dataset.id === sectionId) {
-                panel.classList.add('highlighted');
-                panel.classList.remove('dimmed');
-            } else {
-                panel.classList.add('dimmed');
-                panel.classList.remove('highlighted');
-            }
-        } else {
-            panel.classList.remove('highlighted', 'dimmed');
-        }
-    });
-}
-
-// circle
-function createBudgetCircle() {
-    const svg = document.querySelector('.budget-circle');
-    
-    budgetData.forEach((section, index) => {
-  
-        const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-        
-        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        path.setAttribute('d', createSVGPath(section.startAngle, section.endAngle, 180));
-        path.setAttribute('fill', section.color);
-        path.style.transformOrigin = '200px 200px';
-        path.style.animation = `sectionRotateIn 0.8s ease-out ${index * 0.2}s both`;
-        
-      
-        path.addEventListener('mouseenter', () => handleSectionHover(section.id, true));
-        path.addEventListener('mouseleave', () => handleSectionHover(section.id, false));
-  
-        const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-        const textPos = getTextPosition(section.startAngle, section.endAngle);
-        text.setAttribute('x', textPos.x);
-        text.setAttribute('y', textPos.y);
-        text.setAttribute('text-anchor', 'middle');
-        text.setAttribute('dominant-baseline', 'central');
-        text.setAttribute('textLength', '110');
-        text.textContent = section.label;
-      
-        group.appendChild(path);
-        group.appendChild(text);
-        svg.appendChild(group);
-    });
-}
-
-function createInfoPanels() {
-    const container = document.querySelector('.info-panels');
-    
-    budgetData.forEach((section, index) => {
-        const panel = document.createElement('div');
-        panel.className = 'info-panel';
-        panel.dataset.id = section.id;
-        panel.style.borderColor = section.color;
-        panel.style.animationDelay = `${index * 0.1}s`;
-        
-        const title = document.createElement('h3');
-        title.textContent = `${section.panelTitle}`;
-        title.style.color = section.color;
-        
-        const list = document.createElement('ul');
-        section.items.forEach(item => {
-            const listItem = document.createElement('li');
-            listItem.innerHTML = `<span>•</span><span>${item}</span>`;
-            list.appendChild(listItem);
-        });
-        
-        panel.appendChild(title);
-        panel.appendChild(list);
-        container.appendChild(panel);
-        
-        setTimeout(() => {
-            panel.classList.add('show');
-        }, 1000 + index * 100);
-    });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    createBudgetCircle();
-    createInfoPanels();
-});
-
-
 document.getElementById('parent-budget-btn').addEventListener('click', () => {
   budgetSelection.style.display = 'none';
   budgetHeading.style.display   = 'none';
@@ -737,9 +537,10 @@ document.getElementById('parent-budget-btn').addEventListener('click', () => {
 
 document.getElementById('restart-btn').addEventListener('click', () => {
   closeModal();
-  // Grąžina į pradžios ekraną
   introScreen.style.display = 'flex';
   showSection(introScreen);
+  resetParentBudget();
+  resetChildBudget();
 });
 
 function closeModal() {
@@ -758,8 +559,4 @@ function closeModal() {
   }
 }
 
-
 })();
-
-
-// spalvos
