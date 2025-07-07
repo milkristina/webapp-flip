@@ -26,8 +26,8 @@
       });
 
       const remaining = 20 - totalSpent + additionalTotal;
-      budgetElement.textContent = '20.00';
-      remainingAmountElement.textContent = '20.00'; // Fixed amount for child budget
+      budgetElement.textContent = '20.00'; // Fixed amount for child budget
+      remainingAmountElement.textContent = remaining.toFixed(2); // Dynamic remaining amount
       spentTotalElement.textContent = totalSpent.toFixed(2);
       additionalTotalElement.textContent = additionalTotal.toFixed(2);
     }
