@@ -149,8 +149,6 @@
 
     document.querySelectorAll('.pbp-current-input')[0].dispatchEvent(new Event('input'));
   }
-
-  // Export functions for use by other modules
   window.AppModules = window.AppModules || {};
   window.AppModules.parentBudget = {
     openParentBudgetPage,
