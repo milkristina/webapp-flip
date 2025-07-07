@@ -38,8 +38,6 @@
       tipsList.appendChild(btn);
     });
   }
-
-  // Export functions for use by other modules
   window.AppModules = window.AppModules || {};
   window.AppModules.tips = {
     populateTips
