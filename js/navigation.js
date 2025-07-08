@@ -160,7 +160,6 @@
     }
   }
 
-  // Export functions for use by other modules
   window.AppModules = window.AppModules || {};
   window.AppModules.navigation = {
     showSection,
