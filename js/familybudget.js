@@ -46,7 +46,6 @@ const budgetData = [
     }
 ];
 
-
 function createSVGPath(startAngle, endAngle, radius) {
     const start = (startAngle - 90) * (Math.PI / 180);
     const end = (endAngle - 90) * (Math.PI / 180);
@@ -66,14 +65,12 @@ function createSVGPath(startAngle, endAngle, radius) {
     ].join(" ");
 }
 
-
 function getTextPosition(startAngle, endAngle, radius = 120) {
     const midAngle = ((startAngle + endAngle) / 2 - 90) * (Math.PI / 180);
     const x = 200 + radius * Math.cos(midAngle);
     const y = 200 + radius * Math.sin(midAngle);
     return { x, y };
 }
-
 
 function handleSectionHover(sectionId, isHovering) {
     const panels = document.querySelectorAll('.info-panel');
@@ -183,5 +180,4 @@ document.addEventListener('DOMContentLoaded', () => {
     createBudgetCircle();
     createInfoPanels();
 });
-
 })();
