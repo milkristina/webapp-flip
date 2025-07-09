@@ -731,7 +731,7 @@ button.back-btn:focus-visible {
 
 .income-badge {
     display: inline-block;
-    background: #06b6d4;
+    background: #06b6d4cc;
     color: white;
     padding: 1rem 2rem;
     border-radius: 16px;
@@ -793,7 +793,7 @@ button.back-btn:focus-visible {
 .available-money {
     position: relative;
   margin-top: 2rem;
-  background: #06b6d4;
+  background: #06b6d4cc;
   color: white;
   padding: 0.75rem 1.5rem;
   border-radius: 16px;
@@ -867,7 +867,6 @@ button.back-btn:focus-visible {
     color: #374151;
 }
 
-/* Animacijos */
 @keyframes cardFadeIn {
     to {
         opacity: 1;
@@ -916,4 +915,3 @@ button.back-btn:focus-visible {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
-
