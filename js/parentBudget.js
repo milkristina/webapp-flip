@@ -26,7 +26,7 @@
       });
 
       const remaining = parentInitialBudget - totalSpent + additionalTotal;
-      budgetElement.textContent = parentInitialBudget.toFixed(2); // Fixed amount for parent budget
+      budgetElement.textContent = parentInitialBudget.toFixed(2); 
       remainingAmountElement.textContent = remaining.toFixed(2);
       spentTotalElement.textContent = totalSpent.toFixed(2);
       additionalTotalElement.textContent = additionalTotal.toFixed(2);
