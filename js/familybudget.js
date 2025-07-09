@@ -137,7 +137,7 @@ function createBudgetCircle() {
         lines.forEach((line, index) => {
         const tspan = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
         tspan.setAttribute('x', textPos.x);
-        tspan.setAttribute('dy', index === 0 ? '0' : '1.2em'); // 1.2em tarp eilučių
+        tspan.setAttribute('dy', index === 0 ? '0' : '1.2em'); 
         tspan.textContent = line;
         text.appendChild(tspan);
         });
